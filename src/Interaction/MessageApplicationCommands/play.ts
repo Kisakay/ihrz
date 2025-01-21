@@ -48,7 +48,7 @@ export const command: AnotherCommand = {
         let check: string[] = [];
 
         if (msg && msg.attachments.size >= 1) {
-            msg.attachments.forEach(content => check.push(content.url));
+            msg.attachments.forEach((content: { url: string }) => check.push(content.url));
         } else {
             check.push(msg.content);
         };
@@ -146,4 +146,4 @@ export const command: AnotherCommand = {
 
         setTimeout(deleteContent, 4000)
     },
-}; 
+};
