@@ -56,6 +56,7 @@ var_dont_have_perm: "必要な権限がありません。({perm}権限が必要�
 var_price: "価格"
 var_boost: "ブースト"
 var_uses: "使用回数"
+var_vc_stats: "音声統計"
 
 # Discord Permission Name
 perm_createinstantinvite_name: "インスタント招待を作成"
@@ -938,6 +939,12 @@ util_autorenew_command_ok: "${client.iHorizon_Emojis.icon.Yes_Logo} これで、
 event_autorenew_channel_renewed: "AutoRenewがチャンネルを更新しました！"
 event_autorenew_channel_warning: "AutoRenewモジュールはこのチャンネルを更新するように設定されています。次回の更新は${time}です。"
 
+# /util where
+util_where_deaf: "スピーカーミュート"
+util_where_mute: "マイクミュート"
+var_video: "ビデオ"
+var_whereis: "どこに"
+util_not_in_vc: "メンバーはボイスチャンネルにいません"
 
 # Guild Config commands
 # /blockpub, /guildprofil, /setchannels, /setjoindm, /setjoinmessage, /setjoinroles, /setleavemessage, /setup
@@ -1488,10 +1495,10 @@ tempmute_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | メン�
 tempmute_i_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | 私には権限がありません。"
 tempmute_cannot_mute_yourself: "${client.iHorizon_Emojis.icon.No_Logo} | 自分自身をミュートすることはできません！"
 tempmute_already_muted: "このユーザーはすでにミュートされています！"
-tempmute_command_work: "<@${tomute.id}>さんが${ms(ms(mutetime))}間ミュートされました。"
+tempmute_command_work: "<@${tomute.id}> は ${ms(ms(mutetime))} の間ミュートされました\n**理由**: `${reason}`"
 tempmute_unmuted_by_time: "<@${tomute.id}>さんがミュート解除されました！"
 tempmute_logs_embed_title: "Tempmute Logs"
-tempmute_logs_embed_description: "<@${interaction.user.id}>さんが<@${tomute.id}>さんを${ms(ms(mutetime))}間ミュートしました。"
+tempmute_logs_embed_description: "<@${interaction.user.id}> が <@${tomute.id}> を ${ms(ms(mutetime))} の間ミュートしました\n**理由**: `${reason}`"
 tempmute_reason_create_roles: "一時ミュートのミュート役職を作成してください！"
 
 # /unmute
@@ -1523,6 +1530,13 @@ warnlist_no_data: "${client.iHorizon_Emojis.icon.No_Logo} ${member?.toString()} 
 warnlist_embed_desc: "### ID：${x.id} - ${format(x.timestamp, 'DD/MM/YYYY')}\n> 作成者：<@${x.authorID}>\n> 理由：`${x.reason}`"
 warnlist_embed_title: "${member?.user.globalName} の警告リスト | ページ ${i / usersPerPage + 1}"
 warnlist_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | このDiscordサーバーでメンバーの警告を管理する権限がありません。"
+
+# /baninfo
+baninfo_not_banned: "ユーザーはBANされていません"
+baninfo_ban_info: "BAN情報"
+baninfo_user_not_found: "ユーザーが見つかりません"
+var_banned_by: "BAN実行者"
+var_ban_date: "BAN日時"
 
 
 # Backup commands

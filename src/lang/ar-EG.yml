@@ -56,6 +56,7 @@ var_dont_have_perm: "ليس لديك الصلاحيات اللازمة للقي�
 var_price: "السعر"
 var_boost: "تعزيز"
 var_uses: "الاستخدامات"
+var_vc_stats: "إحصائيات الصوت"
 
 # Discord Permission Name
 perm_createinstantinvite_name: "إنشاء دعوة فورية"
@@ -937,6 +938,12 @@ util_autorenew_command_ok: "${client.iHorizon_Emojis.icon.Yes_Logo} الآن، �
 event_autorenew_channel_renewed: "لقد تم تجديد القناة!"
 event_autorenew_channel_warning: "تم تكوين وحدة AutoRenew لتجديد هذه القناة. التجديد التالي بعد ${time}."
 
+# /util where
+util_where_deaf: "أصم"
+util_where_mute: "صامت"
+var_video: "فيديو"
+var_whereis: "أين هو"
+util_not_in_vc: "الأعضاء ليسوا في قناة صوتية"
 
 # Guild Config commands
 # /blockpub, /guildprofil, /setchannels, /setjoindm, /setjoinmessage, /setjoinroles, /setleavemessage, /setup
@@ -1488,10 +1495,10 @@ tempmute_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | ليس 
 tempmute_i_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | ليس لدي إذن."
 tempmute_cannot_mute_yourself: "${client.iHorizon_Emojis.icon.No_Logo} | لا يمكنك إسكات نفسك!"
 tempmute_already_muted: "هذا العضو مُسكَت بالفعل!"
-tempmute_command_work: "<@${tomute.id}> تم إسكاتها لمدة ${ms(ms(mutetime))}"
+tempmute_command_work: "<@${tomute.id}> تم كتمه لمدة ${ms(ms(mutetime))}\n**السبب**: `${reason}`"
 tempmute_unmuted_by_time: "<@${tomute.id}> تم رفع الميوت!"
 tempmute_logs_embed_title: "سجلات الميوت المؤقت"
-tempmute_logs_embed_description: "<@${interaction.user.id}> قام بإسكات <@${tomute.id}> لمدة ${ms(ms(mutetime))}"
+tempmute_logs_embed_description: "<@${interaction.user.id}> قام بكتم <@${tomute.id}> لمدة ${ms(ms(mutetime))}\n**السبب**: `${reason}`"
 tempmute_reason_create_roles: "إنشاء دور مؤقت للميوت!"
 
 # /unmute
@@ -1523,6 +1530,13 @@ warnlist_no_data: "${client.iHorizon_Emojis.icon.No_Logo} ${member?.toString()} 
 warnlist_embed_desc: "### الرقم: ${x.id} - ${format(x.timestamp, 'DD/MM/YYYY')}\n> الكاتب: <@${x.authorID}>\n> السبب: `${x.reason}`"
 warnlist_embed_title: "قائمة تحذيرات ${member?.user.globalName} | الصفحة ${i / usersPerPage + 1}"
 warnlist_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | ليس لديك إذن لإدارة تحذيرات الأعضاء في هذا السيرفر."
+
+# /baninfo
+baninfo_not_banned: "المستخدم غير محظور"
+baninfo_ban_info: "معلومات الحظر"
+baninfo_user_not_found: "المستخدم غير موجود"
+var_banned_by: "محظور من قبل"
+var_ban_date: "تاريخ الحظر"
 
 
 # Backup commands

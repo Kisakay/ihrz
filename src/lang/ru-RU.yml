@@ -56,6 +56,7 @@ var_dont_have_perm: "У вас нет необходимых разрешени�
 var_price: "Цена"
 var_boost: "Ускорение"
 var_uses: "Использования"
+var_vc_stats: "Голосовая статистика"
 
 # Discord Permission Name
 perm_createinstantinvite_name: "Создать мгновенное приглашение"
@@ -938,6 +939,12 @@ util_autorenew_command_ok: "${client.iHorizon_Emojis.icon.Yes_Logo} Теперь
 event_autorenew_channel_renewed: "AutoRenew обновил канал!"
 event_autorenew_channel_warning: "Модуль AutoRenew настроен на обновление этого канала. Следующее обновление через ${time}."
 
+# /util where
+util_where_deaf: "Самозаглушение звука"
+util_where_mute: "Самозаглушение микрофона"
+var_video: "Видео"
+var_whereis: "Где находится"
+util_not_in_vc: "Участники не находятся в голосовом канале"
 
 # Guild Config commands
 # /blockpub, /guildprofil, /setchannels, /setjoindm, /setjoinmessage, /setjoinroles, /setleavemessage, /setup
@@ -1488,10 +1495,10 @@ tempmute_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | У ва
 tempmute_i_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | У меня нет разрешения."
 tempmute_cannot_mute_yourself: "${client.iHorizon_Emojis.icon.No_Logo} | Вы не можете временно заблокировать сами себя!"
 tempmute_already_muted: "Этот пользователь уже заблокирован!"
-tempmute_command_work: "<@${tomute.id}> был заблокирован на ${ms(ms(mutetime))}"
+tempmute_command_work: "<@${tomute.id}> был замучен на ${ms(ms(mutetime))}\n**Причина**: `${reason}`"
 tempmute_unmuted_by_time: "<@${tomute.id}> был разблокирован!"
 tempmute_logs_embed_title: "Логи временной блокировки"
-tempmute_logs_embed_description: "<@${interaction.user.id}> заблокировал <@${tomute.id}> на ${ms(ms(mutetime))}"
+tempmute_logs_embed_description: "<@${interaction.user.id}> замутил <@${tomute.id}> на ${ms(ms(mutetime))}\n**Причина**: `${reason}`"
 tempmute_reason_create_roles: "Создана роль для временной блокировки!"
 
 # /unmute
@@ -1523,6 +1530,13 @@ warnlist_no_data: "${client.iHorizon_Emojis.icon.No_Logo} Похоже, у ${mem
 warnlist_embed_desc: "### ID: ${x.id} - ${format(x.timestamp, 'DD/MM/YYYY')}\n> Автор: <@${x.authorID}>\n> Причина: `${x.reason}`"
 warnlist_embed_title: "Список предупреждений ${member?.user.globalName} | Страница ${i / usersPerPage + 1}"
 warnlist_dont_have_permission: "${client.iHorizon_Emojis.icon.No_Logo} | У вас нет разрешения на управление предупреждениями участников на этом сервере Discord."
+
+# /baninfo
+baninfo_not_banned: "Пользователь не заблокирован"
+baninfo_ban_info: "Информация о блокировке"
+baninfo_user_not_found: "Пользователь не найден"
+var_banned_by: "Заблокирован"
+var_ban_date: "Дата блокировки"
 
 
 # Команды резервного копирования
