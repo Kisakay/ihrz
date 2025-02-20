@@ -39,7 +39,6 @@ It offers a **large variety of features**, including:
 | **Kisakay** | [GitHub](https://github.com/Kisakay) | She/Her |
 | **IrisWeb** | [GitHub](https://github.com/irisihrz) | She/Her |
 | **Noémie** | [GitHub](https://github.com/name-shitty-github-profile) | She/Her |
-| **Maxine** | [GitHub](https://github.com/mxi1n) | She/Her |
 | **Wyene** | [GitHub](https://github.com/tryedandcatched) | He/Him |
 
 ---  
