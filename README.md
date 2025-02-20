@@ -84,11 +84,11 @@ It offers a **large variety of features**, including:
 ### 🚀 Running on Linux & macOS  
 
 ```bash
-node -v && npm -v
+bun -i
 
-# If you see an error, install node.js and npm.
+# If you see an error, install bun and resource your terminal.
 
-npm build && npm start
+bun build && bun .
 ```
 
 🐳 Docker Method  
