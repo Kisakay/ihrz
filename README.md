@@ -126,9 +126,9 @@ bun build && bun .
 
 📜 In the `LICENSE` files, the name `Anaïs Saraiva` appears as the owner.  
 <br>
-Noémie : She is even prettier than most :D
+🏴󠁣󠁡󠁱󠁣󠁿 Noémie : She is even prettier than most :D
 
-Camille : Real she is really pretty.
+🎀 Camille : Real she is really pretty.
 
 ## ❗ Remarks  
 
