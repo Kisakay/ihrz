@@ -86,50 +86,48 @@ It offers a **large variety of features**, including:
 ```bash
 node -v && npm -v
 
-If you see an error, install node.js and npm.
+# If you see an error, install node.js and npm.
 
 npm build && npm start
+```
 
-🐳 Docker Method
+🐳 Docker Method  
 
-🚧 Coming soon! See more (https://hub.docker.com/r/kisakay/ihorizon)
+🚧 Coming soon! See more (https://hub.docker.com/r/kisakay/ihorizon)  
 
-💸 Need Cheap Hosting?
+💸 Need Cheap Hosting?  
 
-🎉 iHorizon offers ultra-cheap hosting for an ownihrz instance!
-💰 Only 2.00€/month (+0.50€ activation fee)
-⚡ Your bot will be faster than most bots on the market!
+🎉 iHorizon offers ultra-cheap hosting for an ownihrz instance!  
+💰 Only 2.00€/month (+0.50€ activation fee)  
+⚡ Your bot will be faster than most bots on the market!  
 
-🤖 You can even make it public and earn money with it!
+🤖 You can even make it public and earn money with it!  
 
-🔥 About the Bot
+🔥 About the Bot  
 
-🔹 Trusted by more than 330,000 users
-🔹 Used in 1,000+ servers 🎉
-🔹 Certified by Discord and growing fast!
+🔹 Trusted by more than 330,000 users  
+🔹 Used in 1,000+ servers 🎉  
+🔹 Certified by Discord and growing fast!  
 
-📌 Join the official iHorizon Discord support server:
-🌍 Official Server (http://discord.ihorizon.me/) | 🔗 Backup Link (https://discord.gg/ZpBPGNsAsu)
+📌 Join the official iHorizon Discord support server:  
+🌍 Official Server (http://discord.ihorizon.me/) | 🔗 Backup Link (https://discord.gg/ZpBPGNsAsu)  
 
-📌 Invite iHorizon to your server:
-🤖 Click Here (https://discord.com/api/oauth2/authorize?client_id=945202900907470899&permissions=8&scope=bot)
+📌 Invite iHorizon to your server:  
+🤖 Click Here (https://discord.com/api/oauth2/authorize?client_id=945202900907470899&permissions=8&scope=bot)  
 
-📌 Need help? Contact the owner via Discord:
-👤 2h0
+📌 Need help? Contact the owner via Discord:  
+👤 2h0  
 
-👤 About the Owner
+👤 About the Owner  
 
-💖 Kisakay has not changed their identity but embraced who they truly are.
-💜 She now goes by she/her pronouns.
+💖 Kisakay has not changed their identity but embraced who they truly are.  
+💜 She now goes by she/her pronouns.  
 
-📜 In the LICENSE files, the name Anaïs Saraiva appears as the owner.
+📜 In the LICENSE files, the name Anaïs Saraiva appears as the owner.  
 
-	Noémie: She is even prettier than most! 😍
-Camille: Real, she is really pretty. 💖
+❗ Remarks  
 
-❗ Remarks
+🚨 Any form of hate towards contributors will not be tolerated.  
+🚨 Regardless of the type or level of hate.  
 
-🚨 Any form of hate towards contributors will not be tolerated.
-🚨 Regardless of the type or level of hate.
-
-✨ Thank you for using iHorizon! 🚀
+✨ Thank you for using iHorizon!🚀  
