@@ -91,11 +91,11 @@ bun -i
 bun build && bun .
 ```
 
-🐳 Docker Method  
+### 🐳 Docker Method  
 
 🚧 Coming soon! See more (https://hub.docker.com/r/kisakay/ihorizon)  
 
-💸 Need Cheap Hosting?  
+### 💸 Need Cheap Hosting?  
 
 🎉 iHorizon offers ultra-cheap hosting for an ownihrz instance!  
 💰 Only 2.00€/month (+0.50€ activation fee)  
@@ -103,7 +103,7 @@ bun build && bun .
 
 🤖 You can even make it public and earn money with it!  
 
-🔥 About the Bot  
+### 🔥 About the Bot  
 
 🔹 Trusted by more than 330,000 users  
 🔹 Used in 1,000+ servers 🎉  
@@ -118,14 +118,14 @@ bun build && bun .
 📌 Need help? Contact the owner via Discord:  
 👤 2h0  
 
-👤 About the Owner  
+### 👤 About the Owner  
 
 💖 Kisakay has not changed their identity but embraced who they truly are.  
 💜 She now goes by she/her pronouns.  
 
 📜 In the LICENSE files, the name Anaïs Saraiva appears as the owner.  
 
-❗ Remarks  
+### ❗ Remarks  
 
 🚨 Any form of hate towards contributors will not be tolerated.  
 🚨 Regardless of the type or level of hate.  
