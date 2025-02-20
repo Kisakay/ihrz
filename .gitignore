@@ -159,7 +159,4 @@ tools/test.ts
 src/files/.ihrz-cache
 src/files/db.json
 draft
-src/core/core.ts
 bun.lock
-src/core/core.ts
-src/core/core.ts
