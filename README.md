@@ -91,11 +91,11 @@ bun -i
 bun build && bun .
 ```
 
-### 🐳 Docker Method  
+## 🐳 Docker Method  
 
 🚧 Coming soon! [See more](https://hub.docker.com/r/kisakay/ihorizon)  
 
-### 💸 Need Cheap Hosting?  
+# 💸 Need Cheap Hosting?  
 
 🎉 iHorizon offers ultra-cheap hosting for an ownihrz instance!  
 💰 Only 2.00€/month (+0.50€ activation fee)  
@@ -103,10 +103,11 @@ bun build && bun .
 
 🤖 You can even make it public and earn money with it!  
 
-### 🔥 About the Bot  
+# 🔥 About the Bot  
 
 🔹 Trusted by more than 330,000 users  
 🔹 Used in 1,000+ servers 🎉  
+<br>
 🔹 Certified by Discord and growing fast!  
 
 📌 Join the official iHorizon Discord support server:  
@@ -116,18 +117,22 @@ bun build && bun .
 🤖 [Click Here](https://discord.com/api/oauth2/authorize?client_id=945202900907470899&permissions=8&scope=bot)  
 
 📌 Need help? Contact the owner via Discord:  
-👤 2h0  
+👤 `2h0`
 
-### 👤 About the Owner  
+# 👤 About the Owner  
 
-💖 Kisakay has not changed their identity but embraced who they truly are.  
+💖 **Kisakay** has not changed their identity but embraced who they truly are.  
 💜 She now goes by she/her pronouns.  
 
-📜 In the LICENSE files, the name Anaïs Saraiva appears as the owner.  
+📜 In the `LICENSE` files, the name `Anaïs Saraiva` appears as the owner.  
+<br>
+Noémie : She is even prettier than most :D
 
-### ❗ Remarks  
+Camille : Real she is really pretty.
 
-🚨 Any form of hate towards contributors will not be tolerated.  
+## ❗ Remarks  
+
+🚨 Any form of hate towards contributors will not be tolerated.<br>
 🚨 Regardless of the type or level of hate.  
 
 ✨ Thank you for using iHorizon!🚀  
