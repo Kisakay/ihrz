@@ -93,7 +93,7 @@ bun build && bun .
 
 ### 🐳 Docker Method  
 
-🚧 Coming soon! See more (https://hub.docker.com/r/kisakay/ihorizon)  
+🚧 Coming soon! [See more](https://hub.docker.com/r/kisakay/ihorizon)  
 
 ### 💸 Need Cheap Hosting?  
 
@@ -110,10 +110,10 @@ bun build && bun .
 🔹 Certified by Discord and growing fast!  
 
 📌 Join the official iHorizon Discord support server:  
-🌍 Official Server (http://discord.ihorizon.me/) | 🔗 Backup Link (https://discord.gg/ZpBPGNsAsu)  
+🌍 [Official Server](http://discord.ihorizon.me/) | 🔗 [Backup Link](https://discord.gg/ZpBPGNsAsu)  
 
 📌 Invite iHorizon to your server:  
-🤖 Click Here (https://discord.com/api/oauth2/authorize?client_id=945202900907470899&permissions=8&scope=bot)  
+🤖 [Click Here](https://discord.com/api/oauth2/authorize?client_id=945202900907470899&permissions=8&scope=bot)  
 
 📌 Need help? Contact the owner via Discord:  
 👤 2h0  
