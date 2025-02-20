@@ -117,7 +117,7 @@ bun build && bun .
 🤖 [Click Here](https://discord.com/api/oauth2/authorize?client_id=945202900907470899&permissions=8&scope=bot)  
 
 📌 Need help? Contact the owner via Discord:  
-👤 `2h0`
+👤 `kisakay` and `irisbylolirock`
 
 # 👤 About the Owner  
 
