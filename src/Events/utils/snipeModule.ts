@@ -22,7 +22,7 @@
 import hidden from '../../core/functions/maskLink.js';
 
 import { Client, Message } from 'discord.js';
-import { BotEvent } from '../../../types/event';
+import { BotEvent } from '../../../types/event.js';
 
 export const event: BotEvent = {
     name: "messageDelete",
@@ -30,6 +30,9 @@ export const event: BotEvent = {
 
         if (!message.guild || !message.author
             || message.author.id == client.user?.id) return;
+
+        if (message.content.length == 0) return;
+        if (message.content === "") return;
 
         let message_content = hidden(message.content);
 

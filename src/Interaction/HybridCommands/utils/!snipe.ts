@@ -27,13 +27,13 @@ import {
     Message,
 } from 'discord.js'
 
-import { DatabaseStructure } from '../../../../types/database_structure';
-import { LanguageData } from '../../../../types/languageData';
+import { DatabaseStructure } from '../../../../types/database_structure.js';
+import { LanguageData } from '../../../../types/languageData.js';
 
-import { Command } from '../../../../types/command';
+import { Command } from '../../../../types/command.js';
 
 
-import { SubCommand } from '../../../../types/command';
+import { SubCommand } from '../../../../types/command.js';
 
 export const subCommand: SubCommand = {
     run: async (client: Client, interaction: ChatInputCommandInteraction<"cached"> | Message, lang: LanguageData, args?: string[]) => {
@@ -44,9 +44,9 @@ export const subCommand: SubCommand = {
 
         var based = await client.db.get(`${interaction.guildId}.GUILD.SNIPE.${interaction.channel.id}`) as DatabaseStructure.SnipeData[""];
 
-        var message_content = based.snipe;
+        var message_content = based?.snipe;
 
-        if (!based) {
+        if (!based || !message_content) {
             await client.method.interactionSend(interaction, { content: lang.snipe_no_previous_message_deleted });
             return;
         };

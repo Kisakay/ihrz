@@ -28,8 +28,8 @@ import {
     PermissionFlagsBits,
 } from 'discord.js';
 
-import { LanguageData } from '../../../../types/languageData';
-import { Command } from '../../../../types/command';
+import { LanguageData } from '../../../../types/languageData.js';
+import { Command } from '../../../../types/command.js';
 
 
 export const command: Command = {
@@ -108,6 +108,20 @@ export const command: Command = {
             ],
 
             permission: PermissionFlagsBits.BanMembers
+        },
+        {
+            name: 'banlist',
+
+            description: 'Show a list with all banned member',
+            description_localizations: {
+                "fr": "Affiche une liste des gens bannis"
+            },
+
+            aliases: ["bans", "listban", "listbans", "banlists"],
+
+            type: ApplicationCommandOptionType.Subcommand,
+
+            permission: PermissionFlagsBits.ManageGuild
         },
         {
             name: 'clear',
@@ -520,6 +534,36 @@ export const command: Command = {
             type: ApplicationCommandOptionType.Subcommand,
 
             permission: PermissionFlagsBits.ModerateMembers
+        },
+        {
+            name: "clearwarn",
+
+            description: "clear all warns of a user",
+            description_localizations: {
+                "fr": "effacer tout les avertissement d'un utilisateur"
+            },
+
+            options: [
+                {
+                    name: "member",
+
+                    description: "The member you want to clear",
+                    description_localizations: {
+                        "fr": "le membre que vous voulez effacer les avertissements"
+                    },
+
+                    type: ApplicationCommandOptionType.User,
+                    required: true,
+
+                    permission: null
+                }
+            ],
+
+            aliases: ["clearwarns", "clearwarn", "clearsanctions", "clearsanction"],
+
+            type: ApplicationCommandOptionType.Subcommand,
+
+            permission: PermissionFlagsBits.Administrator
         }
     ],
     thinking: true,

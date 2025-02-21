@@ -57,6 +57,19 @@ var_price: "Precio"
 var_boost: "Impulso"
 var_uses: "Usos"
 var_vc_stats: "Estadísticas de voz"
+var_1d: "1 día"
+var_7d: "7 días"
+var_14d: "14 días"
+var_year: "año(s)"
+var_mo: "mes(es)"
+var_w: "semana(s)"
+var_d: "día(s)"
+var_h: "hora(s)"
+var_m: "minuto(s)"
+var_s: "segundo(s)"
+var_ms: "milisegundo(s)"
+var_banned_user: "Usuario(s) Baneado(s)"
+var_no_one_banned: "Nadie está baneado en este servidor."
 
 # Nombres de Permisos de Discord
 perm_createinstantinvite_name: "Crear invitación instantánea"
@@ -460,10 +473,10 @@ kisakay_message: "${client.iHorizon_Emojis.icon.Sparkles} Kisakay es tanto mi cr
 andru_message: "Andru es un colaborador y desarrollador. \"El todoterreno\", gestiona el marketing, la comunidad..."
 
 # /ether
-ether_message: "${client.iHorizon_Emojis.icon.Sparkles} Ether es un colaborador de iHorizon. Está listo para detectar cualquier error tipográfico en el bot y se improvisa a sí mismo como asistente de apoyo para el bot iHorizon."
+ether_message: "${client.iHorizon_Emojis.icon.Sparkles} Ether es colaborador de iHorizon. Le fascinan Linux y la ciberseguridad, y se improvisa a sí mismo como ayudante de soporte para el bot iHorizon."
 
-# /nayaweb
-nayaweb_message: "😼NayaWeb es mi segundo desarrollador/contribuyente , NayaWeb x Kisakay ❤️"
+# /Irisweb
+irisweb_message: "😼IrisWeb es mi segundo desarrollador/contribuyente , IrisWeb x Kisakay ❤️"
 
 # /ping
 pong_message: "【:ballot_box_with_check:】__**Pong**__ : "
@@ -472,7 +485,7 @@ pong_message: "【:ballot_box_with_check:】__**Pong**__ : "
 status_be_bot_dev: "**:x: | ¡Tienes que ser el desarrollador del bot para hacer esto!**"
 
 # /help
-help_tip_embed: "```${client.user?.username} ・ Menú de ayuda```\n${client.iHorizon_Emojis.icon.Pin} ・ **${categories.length}** categorías de comandos disponibles\n${client.iHorizon_Emojis.badge.Slash_Bot} ・ **${client.content.filter(c => c.messageCmd === false).length}** comandos Slash disponibles\n${client.iHorizon_Emojis.icon.Crown_Logo} ・ **Creado por** <@${config.owner.ownerid1}>, <@${config.owner.ownerid2}>\n\n```¿Sabías? ・ Consejos```\n${client.iHorizon_Emojis.vc.Region} ・ ${client.user?.username} es **100% multilingüe**\n${client.iHorizon_Emojis.badge.Slash_Bot} ・ `/setserverlang language:Japanese`"
+help_tip_embed: "```${client.user?.username} ・ Menú de ayuda```\n${client.iHorizon_Emojis.icon.Pin} ・ **${categories.length}** categorías de comandos disponibles\n${client.iHorizon_Emojis.badge.Slash_Bot} ・ **${client.content.filter(c => c.messageCmd === false).length}** comandos Slash disponibles\n${client.iHorizon_Emojis.icon.Crown_Logo} ・ **Creado por** <@${config.owner.ownerid1}>, <@${config.owner.ownerid2}>\n\n```¿Sabías? ・ Consejos```\n${client.iHorizon_Emojis.vc.Region} ・ ${client.user?.username} es **100% multilingüe**\n${client.iHorizon_Emojis.badge.Slash_Bot} ・ `/setlang language:Japanese`"
 help_mod_fields: "Moderación"
 help_ranks_fields: "Rangos"
 help_fun_fields: "Diversión"
@@ -733,6 +746,31 @@ profil_embed_fields_xplevels_value: " Niveles de XP"
 profil_embed_fields_age: "🎂 ・ **Edad**"
 profil_embed_fields_age_value: " años"
 profil_embed_fields_gender: "👤 ・ __Género__"
+profil_embed_fields_pronouns: "📌 ・ __Pronombre__"
+profil_embed_fields_birthdate: "🎂 ・ __Fecha de cumpleaños__"
+
+# /perfil establecer-cumpleaños
+profil_birthday_month_button_label: "Establecer mes"
+profil_birthday_day_button_label: "Establecer día"
+profil_birthday_year_button_label: "Establecer año"
+profil_birthday_embed_title: "🎂 ・ ¡Establece tu cumpleaños!"
+profil_birthday_embed_introduction: "${client.iHorizon_Emojis.icon.Sparkles} **¡Como todo ser humano, tienes un cumpleaños!**${client.iHorizon_Emojis.icon.Sparkles}\n\n${client.iHorizon_Emojis.icon.Crown_Logo} ・ Hola, ${interaction.member?.toString()}\n:tada: ・ ¡Para celebrarlo, es hora de establecerlo!\n"
+profil_birthday_embed_current_birthday: "${client.iHorizon_Emojis.icon.Pin} ・ **Cumpleaños actual**: `${birthday.month}/${birthday.day}/${birthday.year}` (en formato MM/DD/AAAA)"
+profil_birthday_modal1_title: "Ingresa tu año de nacimiento"
+profil_birthday_modal1_fields1_label: "Año"
+profil_birthday_invalid_year: "¡Año inválido! Por favor ingresa un año válido."
+profil_birthday_year_already_set: "Tu año ya está establecido."
+profil_birthday_year_set: "¡Tu año ha sido establecido!"
+profil_birthday_modal2_title: "Ingresa tu mes de nacimiento"
+profil_birthday_modal2_fields1_label: "Mes"
+profil_birthday_invalid_month: "¡Mes inválido! Por favor ingresa un mes válido."
+profil_birthday_month_already_set: "Tu mes ya está establecido."
+profil_birthday_month_set: "¡Tu mes ha sido establecido!"
+profil_birthday_modal3_title: "Ingresa tu día de nacimiento"
+profil_birthday_modal3_fields1_label: "Día"
+profil_birthday_invalid_day: "¡Día inválido! Por favor ingresa un día válido."
+profil_birthday_day_already_set: "Tu día ya está establecido."
+profil_birthday_day_set: "¡Tu día ha sido establecido!"
 
 
 # Utils commands
@@ -945,6 +983,26 @@ util_where_mute: "Enmudecido"
 var_video: "Vídeo"
 var_whereis: "Dónde está"
 util_not_in_vc: "Los miembros no están en un canal de voz"
+
+# /util allwebhooks
+util_no_webhooks: "No hay webhooks en este servidor."
+util_allwebhooks_embed_title: "Todos los webhooks"
+util_allwebhooks_deleting: "Eliminando todos los webhooks..."
+util_allwebhooks_deleted: "**`${u}`** webhook(s) eliminados!"
+
+# /util unzip-emojis
+util_unzip_emojis_command_work: "🎉 ¡Descompresión completada en ${calcTime}ms! He creado ${emojiCount} emoji(s) en el servidor."
+util_unzip_emojis_command_error: "Ocurrió un error al descomprimir los emojis."
+util_unzip_emojis_command_no_file: "Por favor, adjunta un archivo zip que contenga emojis."
+
+# /util vkick
+vkick_member_not_in_guild: "El miembro no está en el gremio."
+vkick_not_in_vc: "El miembro no está en un canal de voz."
+vkick_not_admin_kick: "No puedes desconectar a un administrador de un canal de voz."
+vkick_logEmbed_title: "Expulsión de Voz"
+vkick_logEmbed_desc: "${interaction.member.user.toString()} ha desconectado a ${member.toString()} del canal de voz ${voiceChannel?.toString()}."
+vkick_command_work: "${interaction.member.user.toString()}, has desconectado exitosamente a ${member.toString()} de ${voiceChannel?.toString()}."
+
 
 # Guild Config commands
 # /blockpub, /guildprofil, /setchannels, /setjoindm, /setjoinmessage, /setjoinroles, /setleavemessage, /setup
@@ -1174,6 +1232,7 @@ joinghostping_remove_logs_embed_desc: "${interaction.user} ha eliminado ${channe
 # /automod block mass-mention
 automod_block_massmention_command_off: "${interaction.user}, has desactivado la regla de `AutoModeración de Menciones Masivas` a **falso**.\nAhora los usuarios pueden enviar menciones en sus mensajes.\nAutoModeración x iHorizon ha sido desactivada en tu servidor."
 automod_block_massmention_command_on: "${interaction.user}, has activado la regla de `AutoModeración de Menciones Masivas` a **verdadero**.\nAhora los usuarios no pueden enviar más de **${max_mention}** mención(es) en sus mensajes.\nAutoModeración __enviando registros__ en ${logs_channel}.\nAutoModeración x iHorizon protege tu servidor!"
+automod_block_massmention_command_error404: ¿Has dejado activado Block Mention Spam (activado por defecto por Discord) en la configuración de AutoMod, ya que seguramente es el responsable de este error, por favor desactívalo y ejecuta el comando de nuevo.
 
 # /automod block links
 automod_block_link_command_on: "${interaction.user}, has establecido la `Regla de AutoMod Pub` en **true**.\nAhora los usuarios no pueden enviar enlaces en sus mensajes.\nAutoMod __envía registros__ en ${logs_channel}.\n¡AutoMod x iHorizon protege tu servidor!"
@@ -1216,6 +1275,7 @@ guildconfig_setbot_prefix_prefix_is_good: "El prefijo del bot se ha cambiado con
 # /guildconfig config save
 guildconfig_config_save_check_dm: "Por favor, revisa tu DM. Si no has recibido el mensaje, intenta verificar si aceptas DMs."
 guildconfig_config_save_user_msg: "¡Esta es la copia de seguridad de las configuraciones de `${interaction.guild.name}`!"
+guildconfig_config_save_user_msg_2: "Aquí tienes el enlace para descargar la copia de seguridad del servidor!\n"
 
 # /guildconfig config restore
 guildconfig_config_restore_err_msg: "Hubo un error al descargar el archivo."
@@ -1307,6 +1367,8 @@ setmembercount_logs_embed_description_on_disable: "<@${interaction.user.id}> ¡e
 
 # Music commands
 # /p, /loop, /nowplaying, /pause, /resume, /skip, /stop, /queue, /shuffle
+
+music_cannot: "${client.iHorizon_Emojis.icon.No_Logo} ¡Debes estar en el mismo canal de voz que yo para usar este comando!"
 
 # /p
 p_not_in_voice_channel: "¡Debes estar conectado a un canal de voz para usar este comando!"
@@ -1537,6 +1599,9 @@ baninfo_ban_info: "Información del baneo"
 baninfo_user_not_found: "Usuario no encontrado"
 var_banned_by: "Baneado por"
 var_ban_date: "Fecha del baneo"
+
+# /borrar-advertencias
+clearwarn_command_ok: "${client.iHorizon_Emojis.icon.Yes_Logo} ${interaction.member.toString()}, se ha(n) eliminado **`${allWarns.length}`** advertencia(s) de ${member?.toString()}"
 
 
 # Backup commands
@@ -2165,7 +2230,7 @@ confession_module_modal_components2_label: "¿Es privado?"
 
 # Music Player Events
 
-event_mp_playerStart: "${client.iHorizon_Emojis.icon.Music_Icon} - Reproduciendo `${track.title}` en **${queue.channel.name}** ..."
+event_mp_playerStart: "${client.iHorizon_Emojis.icon.Music_Icon} - Reproduciendo [`${track.title}`](${url}) en **${queue.channel.name}** ..."
 event_mp_audioTrackAdd: "${client.iHorizon_Emojis.icon.Music_Icon} - ¡${track.title} ha sido agregado a la cola!"
 event_mp_playerError: "Tengo problemas para conectarme => ${error.message}"
 event_mp_error: "Hubo un problema con la cola de canciones => ${error.message}"
@@ -2187,6 +2252,7 @@ event_goodbye_default: "{memberUsername} (cuenta creada el {accountCreationTimes
 
 # Eventos de Nivel de XP
 event_xp_level_earn: "**GG**, {memberMention} has ganado +1 para el nivel de XP (Nivel: **{xpLevel}**)"
+event_xp_level_additional_info: "\n-#  ${client.iHorizon_Emojis.vc.OpenChat} ¿Te resulta molesto este mensaje? Puedes desactivar este mensaje deshabilitando el sistema de niveles con el comando `/ranks disable`"
 
 # Eventos del Módulo de Tickets
 event_ticket_embed_description: "¡Hola ${user.username}! ¡Bienvenido a tu ticket! Por favor, sé paciente, te atenderemos en breve. Si deseas cerrar este ticket, ejecuta `/ticket close`"
@@ -2290,7 +2356,7 @@ event_boostlog_sub: "<@${newMember.user.id}> **acaba de quitar su impulso** del 
 economy_disable_msg: "<@${interaction.user.id}>, el `Módulo de Economía` en este servidor está **desactivado**. ¡Ya no puedes usar el módulo de economía!"
 
 # Permission Event
-event_permission_wrong: "${interaction.member?.user.toString()}, ¡no tienes permiso para usar este comando! Permiso necesario: **`${neededPerm}`**"
+event_permission_wrong: "${interaction.member?.user.toString()}, ¡no tienes permiso para usar este comando! Permiso necesario: ${neededPerm}"
 
 # Módulo de TempVoice
 # Todos los componentes, globalVar...

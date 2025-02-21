@@ -20,21 +20,16 @@
 */
 
 import {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
     ChatInputCommandInteraction,
     Client,
     EmbedBuilder,
-    GuildMember,
-    InteractionEditReplyOptions,
     Message,
-    MessagePayload,
-    MessageReplyOptions,
-    User,
 } from 'discord.js';
-import { LanguageData } from '../../../../types/languageData';
-import { Command } from '../../../../types/command';
-
-
-import { SubCommand } from '../../../../types/command';
+import { LanguageData } from '../../../../types/languageData.js';
+import { SubCommand } from '../../../../types/command.js';
 
 export const subCommand: SubCommand = {
     run: async (client: Client, interaction: ChatInputCommandInteraction<"cached"> | Message, lang: LanguageData, args?: string[]) => {
@@ -43,16 +38,21 @@ export const subCommand: SubCommand = {
         if (!client.user || !interaction.member || !interaction.guild || !interaction.channel) return;
 
         let embed = new EmbedBuilder()
-            .setImage(interaction.guild.iconURL())
+            .setImage(interaction.guild.iconURL({ extension: "webp", size: 4096 }))
             .setColor("#add5ff")
-            .setTitle("Server icon")
-            .setDescription(lang.avatar_embed_description)
-            .setTimestamp()
-            .setFooter(await client.method.bot.footerBuilder(interaction));
+            .setTitle(interaction.guild.name);
 
         await client.method.interactionSend(interaction, {
             embeds: [embed],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            components: [
+                new ActionRowBuilder<ButtonBuilder>()
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setStyle(ButtonStyle.Link)
+                            .setLabel(lang.pfps_download_guild_button)
+                            .setURL(interaction.guild.iconURL({ extension: "webp", size: 4096 }) || "https://ihorizon.me/assets/img/unknown-user.png")
+                    )
+            ]
         });
         return;
     },

@@ -57,6 +57,19 @@ var_price: "価格"
 var_boost: "ブースト"
 var_uses: "使用回数"
 var_vc_stats: "音声統計"
+var_1d: "1日"
+var_7d: "7日"
+var_14d: "14日"
+var_year: "年"
+var_mo: "月"
+var_w: "週"
+var_d: "日"
+var_h: "時間"
+var_m: "分"
+var_s: "秒"
+var_ms: "ミリ秒"
+var_banned_user: "BANされたユーザー"
+var_no_one_banned: "このサーバーでBANされているユーザーはいません。"
 
 # Discord Permission Name
 perm_createinstantinvite_name: "インスタント招待を作成"
@@ -460,10 +473,10 @@ kisakay_message: "${client.iHorizon_Emojis.icon.Sparkles} Kisakayは私の創造
 andru_message: "Andruはコラボレーターであり開発者です。\"何でも屋\"として、マーケティング、コミュニティを管理しています..."
 
 # /ether
-ether_message: "${client.iHorizon_Emojis.icon.Sparkles} EtherはiHorizonの貢献者です。iHorizonボットのサポートアシスタントとして、ボットの誤字脱字を即座に発見する。"
+ether_message: "${client.iHorizon_Emojis.icon.Sparkles} EtherはiHorizonのコントリビューターです。Linuxとサイバーセキュリティに魅了され、iHorizonボットのサポートヘルパーとして即興で活動している。"
 
-# /nayaweb
-nayaweb_message: "😼ナヤウェブは私の2番目の開発者/貢献者 , ナヤウェブ x キサケイ ❤️"
+# /Irisweb
+irisweb_message: "😼ナヤウェブは私の2番目の開発者/貢献者 , ナヤウェブ x キサケイ ❤️"
 
 # /ping
 pong_message: "【:ballot_box_with_check:】__**Pong**__ : "
@@ -472,7 +485,7 @@ pong_message: "【:ballot_box_with_check:】__**Pong**__ : "
 status_be_bot_dev: ":x: | **Botの開発者である必要があります！**"
 
 # /help
-help_tip_embed: "```${client.user?.username} ・ ヘルプメニュー```\n${client.iHorizon_Emojis.icon.Pin} ・ **${categories.length}** 利用可能なコマンドカテゴリ\n${client.iHorizon_Emojis.badge.Slash_Bot} ・ **${client.content.filter(c => c.messageCmd === false).length}** 利用可能なスラッシュコマンド\n${client.iHorizon_Emojis.icon.Crown_Logo} ・ **作成者** <@${config.owner.ownerid1}>, <@${config.owner.ownerid2}>\n\n```知ってますか？ ・ ヒント```\n${client.iHorizon_Emojis.vc.Region} ・ ${client.user?.username} は**100％マルチ言語**です\n${client.iHorizon_Emojis.badge.Slash_Bot} ・ `/setserverlang language:Japanese`"
+help_tip_embed: "```${client.user?.username} ・ ヘルプメニュー```\n${client.iHorizon_Emojis.icon.Pin} ・ **${categories.length}** 利用可能なコマンドカテゴリ\n${client.iHorizon_Emojis.badge.Slash_Bot} ・ **${client.content.filter(c => c.messageCmd === false).length}** 利用可能なスラッシュコマンド\n${client.iHorizon_Emojis.icon.Crown_Logo} ・ **作成者** <@${config.owner.ownerid1}>, <@${config.owner.ownerid2}>\n\n```知ってますか？ ・ ヒント```\n${client.iHorizon_Emojis.vc.Region} ・ ${client.user?.username} は**100％マルチ言語**です\n${client.iHorizon_Emojis.badge.Slash_Bot} ・ `/setlang language:Japanese`"
 help_mod_fields: "モデレーション"
 help_ranks_fields: "ランク"
 help_fun_fields: "楽しい"
@@ -733,6 +746,31 @@ profil_embed_fields_xplevels_value: " XPレベル"
 profil_embed_fields_age: "🎂 ・ __年齢__"
 profil_embed_fields_age_value: " 歳"
 profil_embed_fields_gender: "👤 ・ __性別__"
+profil_embed_fields_pronouns: "📌 ・ __代名詞__"
+profil_embed_fields_birthdate: "🎂 ・ __誕生日の日付__"
+
+# /プロフィール 誕生日設定
+profil_birthday_month_button_label: "月を設定"
+profil_birthday_day_button_label: "日を設定"
+profil_birthday_year_button_label: "年を設定"
+profil_birthday_embed_title: "🎂 ・ 誕生日を設定しましょう！"
+profil_birthday_embed_introduction: "${client.iHorizon_Emojis.icon.Sparkles} **人間なら誰でも誕生日がありますよね！**${client.iHorizon_Emojis.icon.Sparkles}\n\n${client.iHorizon_Emojis.icon.Crown_Logo} ・ こんにちは、${interaction.member?.toString()}\n:tada: ・ お祝いするために、設定しましょう！\n"
+profil_birthday_embed_current_birthday: "${client.iHorizon_Emojis.icon.Pin} ・ **現在の誕生日**: `${birthday.month}/${birthday.day}/${birthday.year}` (MM/DD/YYYY形式)"
+profil_birthday_modal1_title: "生年を入力してください"
+profil_birthday_modal1_fields1_label: "年"
+profil_birthday_invalid_year: "無効な年です！有効な年を入力してください。"
+profil_birthday_year_already_set: "年は既に設定されています。"
+profil_birthday_year_set: "年が設定されました！"
+profil_birthday_modal2_title: "誕生月を入力してください"
+profil_birthday_modal2_fields1_label: "月"
+profil_birthday_invalid_month: "無効な月です！有効な月を入力してください。"
+profil_birthday_month_already_set: "月は既に設定されています。"
+profil_birthday_month_set: "月が設定されました！"
+profil_birthday_modal3_title: "誕生日を入力してください"
+profil_birthday_modal3_fields1_label: "日"
+profil_birthday_invalid_day: "無効な日です！有効な日を入力してください。"
+profil_birthday_day_already_set: "日は既に設定されています。"
+profil_birthday_day_set: "日が設定されました！"
 
 
 # Utils commands
@@ -945,6 +983,26 @@ util_where_mute: "マイクミュート"
 var_video: "ビデオ"
 var_whereis: "どこに"
 util_not_in_vc: "メンバーはボイスチャンネルにいません"
+
+# /util allwebhooks
+util_no_webhooks: "このサーバーにはwebhookはありません。"
+util_allwebhooks_embed_title: "すべてのWebhook"
+util_allwebhooks_deleting: "すべてのWebhookを削除しています..."
+util_allwebhooks_deleted: "**`${u}`** webhookが削除されました！"
+
+# /util unzip-emojis
+util_unzip_emojis_command_work: "🎉 ${calcTime}ミリ秒で解凍が完了しました！サーバーで${emojiCount}個の絵文字を作成しました。"
+util_unzip_emojis_command_error: "絵文字の解凍中にエラーが発生しました。"
+util_unzip_emojis_command_no_file: "絵文字を含むZIPファイルを添付してください。"
+
+# /util vkick
+vkick_member_not_in_guild: "メンバーはギルドにいません。"
+vkick_not_in_vc: "メンバーはボイスチャンネルにいません。"
+vkick_not_admin_kick: "管理者をボイスチャンネルから切断することはできません。"
+vkick_logEmbed_title: "ボイスキック"
+vkick_logEmbed_desc: "${interaction.member.user.toString()} は ${member.toString()} をボイスチャンネル ${voiceChannel?.toString()} から切断しました。"
+vkick_command_work: "${interaction.member.user.toString()}、${member.toString()} を ${voiceChannel?.toString()} から正常に切断しました。"
+
 
 # Guild Config commands
 # /blockpub, /guildprofil, /setchannels, /setjoindm, /setjoinmessage, /setjoinroles, /setleavemessage, /setup
@@ -1174,6 +1232,7 @@ joinghostping_remove_logs_embed_desc: "${interaction.user} が Join GhostPing �
 # /automod block mass-mention
 automod_block_massmention_command_off: "${interaction.user}, あなたは`Mass-Mention AutoModルール`を**false**に設定しました。\n今、ユーザーはメッセージにメンションを送信できます。\nAutoMod x iHorizonはサーバーで無効になっています！"
 automod_block_massmention_command_on: "${interaction.user}, あなたは`Mass-Mention AutoModルール`を**true**に設定しました。\n今、ユーザーはメッセージに**${max_mention}**回以上のメンションを送信できません。\nAutoModは${logs_channel}にログを送信しています。\nAutoMod x iHorizonがサーバーを保護しています！"
+automod_block_massmention_command_error404: AutoMod設定でBlock Mention Spamを有効にしたままにしていませんか（Discordではデフォルトで有効になっています）。
 
 # /automod block links
 automod_block_link_command_on: "${interaction.user}、`Pub AutoModルール`を**true**に設定しました。\nこれでユーザーはメッセージにリンクを送信できません。\nAutoModは${logs_channel}に__ログを送信__します。\nAutoMod x iHorizonはあなたのサーバーを保護します！"
@@ -1216,6 +1275,7 @@ guildconfig_setbot_prefix_prefix_is_good: "ボットプレフィックスが正�
 # /guildconfig config save
 guildconfig_config_save_check_dm: "DMを確認してください。メッセージが届いていない場合は、DMを受け入れる設定になっているか確認してください。"
 guildconfig_config_save_user_msg: "`${interaction.guild.name}` の設定のバックアップです！"
+guildconfig_config_save_user_msg_2: "サーバーのバックアップをダウンロードするリンクはこちらです！\n"
 
 # /guildconfig config restore
 guildconfig_config_restore_err_msg: "ファイルのダウンロード中にエラーが発生しました。"
@@ -1307,6 +1367,8 @@ setmembercount_logs_embed_description_on_disable: "<@${interaction.user.id}>さ�
 
 # Music commands
 # /p, /loop, /nowplaying, /pause, /resume, /skip, /stop, /queue, /shuffle
+
+music_cannot: "${client.iHorizon_Emojis.icon.No_Logo} このコマンドを使用するには、私と同じボイスチャンネルにいる必要があります！"
 
 # /p
 p_not_in_voice_channel: "このコマンドを使用するには、ボイスチャンネルに接続する必要があります！"
@@ -1537,6 +1599,9 @@ baninfo_ban_info: "BAN情報"
 baninfo_user_not_found: "ユーザーが見つかりません"
 var_banned_by: "BAN実行者"
 var_ban_date: "BAN日時"
+
+# /警告クリア
+clearwarn_command_ok: "${client.iHorizon_Emojis.icon.Yes_Logo} ${interaction.member.toString()}、${member?.toString()} の **`${allWarns.length}`** 件の警告が削除されました。"
 
 
 # Backup commands
@@ -2130,7 +2195,7 @@ rc_get_mainEmbed_field3_value: "*日付は MM/DD/YYYY HH:mm 形式*"
 rc_get_mainEmbed_field4_name: "キー使用回数"
 rc_get_mainEmbed_field5_name: "設定作成者"
 rc_get_secondEmbed_title: "保存されたユーザー"
-rc_get_secondEmbed_footer: "ページ ${from} / ${to)}"
+rc_get_secondEmbed_footer: "ページ ${from} / ${to}"
 rc_get_locale: "ロケール"
 rc_get_username: "ユーザー名"
 rc_get_unkwnon_user: "不明なユーザー (${Data.data.config.author.id})"
@@ -2165,7 +2230,7 @@ confession_module_modal_components2_label: "これはプライベートですか
 
 # Music Player Events
 
-event_mp_playerStart: "${client.iHorizon_Emojis.icon.Music_Icon} - 現在 **${queue.channel.name}** で `${track.title}` を再生中..."
+event_mp_playerStart: "${client.iHorizon_Emojis.icon.Music_Icon} - 現在 **${queue.channel.name}** で [`${track.title}`](${url}) を再生中..."
 event_mp_audioTrackAdd: "${client.iHorizon_Emojis.icon.Music_Icon} - ${track.title} をキューに追加しました！"
 event_mp_playerError: "接続に問題があります => ${error.message}"
 event_mp_error: "曲のキューに問題があります => ${error.message}"
@@ -2187,6 +2252,7 @@ event_goodbye_default: "{memberUsername}（アカウント作成日：{accountCr
 
 # XP Level Events
 event_xp_level_earn: "{memberMention} さん、レベルアップ (+1) おめでとうございます (現在のレベル: **{xpLevel}**)。"
+event_xp_level_additional_info: "\n-#  ${client.iHorizon_Emojis.vc.OpenChat} このメッセージは煩わしいですか？`/ranks disable`コマンドでレベリングシステムを無効にすることで、このメッセージを無効にできます"
 
 # Ticket Module Events:
 event_ticket_embed_description: "${user.username}さん、チケットへようこそ！しばらくお待ちください。チケットを閉じる場合は、`/ticket close` を実行してください。"
@@ -2290,7 +2356,7 @@ event_boostlog_sub: "<@${newMember.user.id}> **がサーバーからブースト
 economy_disable_msg: "<@${interaction.user.id}>、このギルドの `経済モジュール` は**無効**になっています。もう経済モジュールは使えません！"
 
 # Permission Event
-event_permission_wrong: "${interaction.member?.user.toString()}、このコマンドを使用する権限がありません！必要な権限：**`${neededPerm}`**"
+event_permission_wrong: "${interaction.member?.user.toString()}、このコマンドを使用する権限がありません！必要な権限：${neededPerm}"
 
 # TempVoiceモジュール
 # すべてのコンポーネント、グローバル変数...

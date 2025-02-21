@@ -24,30 +24,68 @@ import {
     GuildMember,
     Message
 } from "discord.js";
-import { DatabaseStructure } from "../../../types/database_structure";
-import { LanguageData } from "../../../types/languageData";
+import { DatabaseStructure } from "../../../types/database_structure.js";
+import { LanguageData } from "../../../types/languageData.js";
+
+type command = {
+    users: string[];
+    roles: string[];
+    level: number;
+}
 
 export async function checkCommandPermission(
     interaction: ChatInputCommandInteraction<"cached"> | Message,
     command: string
 ): Promise<{
     allowed: boolean;
-    neededPerm: DatabaseStructure.PermLevel | DatabaseStructure.PermNone;
+    permissionData: command;
 }> {
-    const usr =
-        interaction instanceof ChatInputCommandInteraction
-            ? interaction.user
-            : interaction.author;
+    const usr = interaction instanceof ChatInputCommandInteraction ? interaction.user : interaction.author;
     const db = interaction.client.db;
 
     // Fetch permission data from database
-    const guildPerm = (await db.get(
-        `${interaction.guildId}.UTILS`
-    )) as DatabaseStructure.UtilsData;
+    const guildPerm = (await db.get(`${interaction.guildId}.UTILS`)) as DatabaseStructure.UtilsData;
+    if (!guildPerm) {
+        return {
+            allowed: false,
+            permissionData: {
+                users: [],
+                roles: [],
+                level: 0
+            }
+        };
+    }
 
-    let cmdPermData = guildPerm?.PERMS?.[command] as DatabaseStructure.PermCommandData | DatabaseStructure.PermLevel | undefined;
+    // Get command permission data
+    let cmdPermData = getCmdPermData(command, guildPerm);
 
-    // Handle legacy permission levels (numbers instead of PermCommandData)
+    // Check permissions in order of priority
+    const checkResults = await Promise.all([
+        checkExplicitUserPermission(usr.id, cmdPermData),
+        checkRoleHierarchy(interaction.member, guildPerm, cmdPermData),
+        checkExplicitRolePermission(interaction.member, cmdPermData),
+        checkUserPermLevel(usr.id, guildPerm, cmdPermData)
+    ]);
+
+    // If any permission check returns true, allow the command
+    const isAllowed = checkResults.some(result => result);
+
+    return {
+        allowed: isAllowed,
+        permissionData: cmdPermData
+    };
+}
+
+// Helper function to get command permission data
+function getCmdPermData(command: string, guildPerm: DatabaseStructure.UtilsData): command {
+    let cmdPermData = guildPerm?.PERMS?.[command] as command | DatabaseStructure.PermLevel | undefined;
+
+    // If no direct command permission, check category permission
+    if (!cmdPermData && guildPerm?.PERMS?.[command.split(" ")[0]]) {
+        cmdPermData = guildPerm.PERMS[command.split(" ")[0]];
+    }
+
+    // Convert legacy number format to new format
     if (typeof cmdPermData === "number") {
         cmdPermData = {
             users: [],
@@ -56,64 +94,87 @@ export async function checkCommandPermission(
         };
     }
 
-    // If the command is not set, check if the category is set
-    if (!cmdPermData && guildPerm?.PERMS?.[command.split(" ")[0]]) {
-        cmdPermData = guildPerm?.PERMS?.[command.split(" ")[0]];
-
-        // Handle legacy permission levels (numbers instead of PermCommandData)
-        if (typeof cmdPermData === "number") {
-            cmdPermData = {
-                users: [],
-                roles: [],
-                level: cmdPermData
-            };
-        }
-    }
-
-    // If no specific permission is required, unallow by default
+    // Default permission data if none exists
     if (!cmdPermData) {
-        return { allowed: false, neededPerm: 0 };
+        cmdPermData = {
+            users: [],
+            roles: [],
+            level: 0
+        };
     }
 
-    const { users, roles, level: cmdNeededPerm } = cmdPermData;
+    return cmdPermData;
+}
 
-    // Check roles and implement pyramidal system
+// Check if user is explicitly allowed
+function checkExplicitUserPermission(userId: string, cmdPermData: command): boolean {
+    if (cmdPermData.users.includes(userId)) {
+        return true;
+    }
+
+    // Special case: if users are specified but level is 0, check if user is in the list
+    if (cmdPermData.users.length > 0 && cmdPermData.level === 0) {
+        return cmdPermData.users.includes(userId);
+    }
+
+    return false;
+}
+
+// Check role hierarchy system
+function checkRoleHierarchy(
+    member: GuildMember | null | undefined,
+    guildPerm: DatabaseStructure.UtilsData,
+    cmdPermData: command
+): boolean {
+    if (!member || !guildPerm.roles || cmdPermData.level === 0) {
+        return false;
+    }
+
     let highestRolePermLevel = 0;
-    if (guildPerm.roles) {
-        // Loop through all possible permission levels (1 to 8)
-        for (let permLevel = 1; permLevel <= 8; permLevel++) {
-            const roleId = guildPerm.roles[permLevel as keyof DatabaseStructure.UtilsRoleData];
-            // If user has this role, update their highest permission level
-            if (roleId && interaction.member?.roles.cache.has(roleId)) {
-                highestRolePermLevel = Math.max(highestRolePermLevel, permLevel);
-            }
+
+    // Check all permission levels (1-8)
+    for (let permLevel = 1; permLevel <= 8; permLevel++) {
+        const roleId = guildPerm.roles[permLevel as keyof DatabaseStructure.UtilsRoleData];
+        if (roleId && member.roles.cache.has(roleId)) {
+            highestRolePermLevel = Math.max(highestRolePermLevel, permLevel);
         }
     }
 
-    // Check if user is explicitly allowed
-    if (users.includes(usr.id)) {
-        return { allowed: true, neededPerm: 8 };
+    return highestRolePermLevel >= cmdPermData.level;
+}
+
+// Check explicit role permissions
+function checkExplicitRolePermission(
+    member: GuildMember | null | undefined,
+    cmdPermData: command
+): boolean {
+    if (!member) {
+        return false;
     }
 
-    // Check if user has a role with permission level equal or higher than required
-    if (highestRolePermLevel >= cmdNeededPerm) {
-        return { allowed: true, neededPerm: cmdNeededPerm };
+    // Check if user has any of the explicitly allowed roles
+    const hasAllowedRole = cmdPermData.roles.some(roleId => member.roles.cache.has(roleId));
+
+    // Special case: if roles are specified but level is 0, only these roles have access
+    if (cmdPermData.roles.length > 0 && cmdPermData.level === 0) {
+        return hasAllowedRole;
     }
 
-    // Check if user has the required role
-    const memberRoles = interaction.member?.roles.cache;
-    if (memberRoles && roles.some((roleId) => memberRoles.has(roleId))) {
-        return { allowed: true, neededPerm: cmdNeededPerm };
+    return hasAllowedRole;
+}
+
+// Check user permission level in database
+function checkUserPermLevel(
+    userId: string,
+    guildPerm: DatabaseStructure.UtilsData,
+    cmdPermData: command
+): boolean {
+    if (cmdPermData.level === 0) {
+        return false;
     }
 
-    // Check if user has a permission level in database equal or higher than required
-    const userPermLevel = guildPerm?.USER_PERMS?.[usr.id] || 0;
-    if (userPermLevel >= cmdNeededPerm) {
-        return { allowed: true, neededPerm: cmdNeededPerm };
-    }
-
-    // If no conditions are met, deny access
-    return { allowed: false, neededPerm: cmdNeededPerm };
+    const userPermLevel = guildPerm?.USER_PERMS?.[userId] || 0;
+    return userPermLevel >= cmdPermData.level;
 }
 
 export async function checkUserPermissions(
@@ -129,15 +190,28 @@ export async function checkUserPermissions(
 export async function sendErrorMessage(
     interaction: ChatInputCommandInteraction<"cached"> | Message,
     lang: LanguageData,
-    neededPerm: DatabaseStructure.PermLevel | DatabaseStructure.PermNone
+    permissionData: command
 ) {
+    let neededPerm: string = "";
+
+    if (permissionData) {
+        const hasRoles = permissionData.roles.length > 0;
+        const hasUsers = permissionData.users.length > 0;
+
+        (permissionData.level > 0) ? neededPerm += `\`${permissionData.level}\` \n` : "";
+        (hasRoles) ? neededPerm += `${lang.var_roles}: ${permissionData.roles.map(x => `<@&${x}>`).join(", ")} \n` : "";
+        (hasUsers) ? neededPerm += `${lang.var_member}: ${hasRoles ? " / " : ""}${permissionData.users.map(x => `<@${x}>`).join(", ")} \n` : "";
+    } else {
+        neededPerm = "**\`Discord Permission\`**";
+    }
+
     return await interaction.client.method.interactionSend(interaction, {
         content: lang.event_permission_wrong
             .replace(
                 "${interaction.member?.user.toString()}",
                 interaction.member?.user.toString()!
             )
-            .replace("${neededPerm}", String(neededPerm === 0 ? 'Discord Permission' : neededPerm)),
+            .replace("${neededPerm}", neededPerm),
         ephemeral: true
     });
 }

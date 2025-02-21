@@ -30,11 +30,11 @@ interface Action {
     type: number;
     metadata: Record<string, any>;
 };
-import { LanguageData } from '../../../../types/languageData';
-import { Command } from '../../../../types/command';
+import { LanguageData } from '../../../../types/languageData.js';
+import { Command } from '../../../../types/command.js';
 
 
-import { SubCommand } from '../../../../types/command';
+import { SubCommand } from '../../../../types/command.js';
 
 export const subCommand: SubCommand = {
     run: async (client: Client, interaction: ChatInputCommandInteraction<"cached">, lang: LanguageData, args?: string[]) => {
@@ -106,7 +106,7 @@ export const subCommand: SubCommand = {
                 });
                 return;
             } catch (error) {
-                await interaction.editReply({ content: 'Error 404' });
+                await interaction.editReply({ content: 'Error 404. ' + lang.automod_block_massmention_command_error404 });
             }
         } else if (turn === "off") {
 
