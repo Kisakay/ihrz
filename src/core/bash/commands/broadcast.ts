@@ -27,11 +27,10 @@ export const command: BashCommands = {
     command_description: "Send a message to all of iHorizon guild",
     aliases: ["bc", "announce", "sendall", "send"],
     run: async function (client, stream, args) {
-        let args2 = args.join(" ");
         let embed = new EmbedBuilder()
             .setColor('#4dff00')
             .setTitle('@Broadcast message')
-            .setDescription(`\`${args2.slice(0).split(" ")}\``)
+            .setDescription(`\`${args.join(" ")}\``)
             .setFooter({ text: `Kisakay - iHorizon`, iconURL: "attachment://footer_icon.png" });
 
         let i = 0;
