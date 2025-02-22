@@ -844,7 +844,7 @@ blockbot_logs_disable_commmand_work: "Journal BlockBot"
 blockbot_logs_disable_description: "${interaction.user} (Le propriétaire du serveur) a __désactivé__ `BlockBot`. Maintenant, le bot peut être ajouté à ce serveur !"
 
 # /banner
-banner_guild_embed: "**Ceci est la bannière du serveur de guilde !**"
+banner_guild_embed: "**Ceci est la bannière du serveur !**"
 banner_user_embed: "**Ceci est la bannière de ${user?.username} !**"
 
 # /massiverole
