@@ -62,8 +62,10 @@ export default async (client: Client) => {
     }, (clientSSH) => {
 
         clientSSH.on('authentication', (ctx) => {
-            if (ctx.method !== 'password' || user.username !== ctx.username || user.password !== ctx.password?.toString()) {
+            if (ctx.method !== 'password' || user.username !== ctx.username) {
                 ctx.reject();
+            } else if (user.password !== ctx.password?.toString()) {
+                clientSSH.end();
             } else {
                 ctx.accept();
             }
