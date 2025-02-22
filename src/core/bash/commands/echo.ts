@@ -25,6 +25,12 @@ export const command: BashCommands = {
     command_name: "echo",
     command_description: "Echoing back to the console",
     run: async function (client, stream, args) {
-        stream.write(args.join(" "));
+
+        if (args.length === 0) {
+            stream.write("echo: missing arguments\n");
+            return;
+        }
+
+        stream.write(args.join(" ") + "\n");
     }
 };
