@@ -18,7 +18,9 @@
 
 ・ Copyright © 2020-2025 iHorizon
 */
-import { Server } from 'ssh2';
+
+import pkg from 'ssh2';
+
 import os from 'os';
 import fs from 'fs';
 import readline from 'readline';
@@ -55,7 +57,7 @@ export default async (client: Client) => {
         logger.log(`${client.config.console.emojis.OK} >> SSH key successfully generated`.green);
     }
 
-    const server = new Server({
+    const server = new pkg.Server({
         hostKeys: [fs.readFileSync(HOST_KEY_PATH)]
     }, (clientSSH) => {
 
@@ -78,6 +80,13 @@ export default async (client: Client) => {
                         input: stream as any,
                         output: stream as any,
                         terminal: true
+                    });
+
+                    (stream as any)._rl = rl;
+
+                    rl.on('SIGINT', () => {
+                        stream.write('\n\r');
+                        rl.prompt();
                     });
 
                     let bash_history_path = `${process.cwd()}/src/files`;
