@@ -24,7 +24,7 @@ import { BashCommands } from "../../../../types/bashCommands.js";
 export const command: BashCommands = {
     command_name: "clear",
     command_description: "Clear the console",
-    run: function () {
-        console.clear()
+    run: async function (client, stream, args) {
+        stream.write('\x1Bc');
     }
 };

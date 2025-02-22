@@ -22,16 +22,15 @@
 
 import { BashCommands } from "../../../../types/bashCommands.js";
 import { execSync } from 'child_process';
-import { Client } from 'discord.js';
 
 export const command: BashCommands = {
     command_name: "r",
     command_description: "Run an bash command",
-    run: function (client: Client, args: string) {
+    run: async function (client, stream, args) {
         try {
-            execSync(args, { stdio: [0, 1, 2], cwd: process.cwd() });
+            execSync(args.join(" "), { stdio: [0, 1, 2], cwd: process.cwd() });
         } catch (error) {
-            console.error((error as any).message);
+            stream.write((error as any).message);
         }
     }
 };
