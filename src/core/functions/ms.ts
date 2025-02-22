@@ -77,6 +77,7 @@ class iHorizonTimeCalculator {
                     multiplier = 86400000;
                     break;
                 case 'w':
+                case 'sm':
                 case 'week':
                 case 'weeks':
                 case 'semaine':
