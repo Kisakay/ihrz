@@ -184,7 +184,7 @@ remove_command_error: "Error occurred, please try again"
 remove_command_work: "Successfully removed ${member.tag} from your ticket!"
 
 # /transript
-transript_disabled_command: "You cannot use this command because an administrator has disabled itt!"
+transript_disabled_command: "You cannot use this command because an administrator has disabled it!"
 transript_name_sourcebin: " "
 transript_title_sourcebin: "Ticket Chat transcript for ${channel.name}"
 transript_command_error: "Error occurred, please try again!"
