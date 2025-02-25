@@ -146,4 +146,4 @@ export const command: AnotherCommand = {
 
         setTimeout(deleteContent, 4000)
     },
-};
+}; 
