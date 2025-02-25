@@ -65,7 +65,7 @@ export const subCommand: SubCommand = {
         await client.db.set(`${interaction.guildId}.ECONOMY.settings.${type}.cooldown`, time);
 
         await client.method.interactionSend(interaction, {
-            content: `Successfully set the cooldown for ${type} to ${client.timeCalculator.to_beautiful_string(time)}`
+            content: `Successfully set the cooldown for ${type} to ${client.timeCalculator.to_beautiful_string(time, lang)}`
         });
     },
 };

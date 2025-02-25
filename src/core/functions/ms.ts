@@ -24,6 +24,7 @@ import { LanguageData } from "../../../types/languageData.js";
 class iHorizonTimeCalculator {
 
     to_ms(timeString: string): number | undefined {
+        timeString = timeString.replace(" ", "");
         const regex = /(-?\d*\.?\d+)([a-zA-Z]+)/g;
         let totalMilliseconds = 0;
         let matches;
@@ -77,6 +78,7 @@ class iHorizonTimeCalculator {
                     multiplier = 86400000;
                     break;
                 case 'w':
+                case 'sm':
                 case 'week':
                 case 'weeks':
                 case 'semaine':
@@ -108,7 +110,7 @@ class iHorizonTimeCalculator {
         return totalMilliseconds === 0 ? undefined : totalMilliseconds;
     };
 
-    to_beautiful_string(timeStringOrMs: string | number, options?: { long?: boolean }, lang?: LanguageData): string {
+    to_beautiful_string(timeStringOrMs: string | number, lang: LanguageData, options?: { long?: boolean }): string {
         let milliseconds: number;
 
         if (typeof timeStringOrMs === 'string') {
