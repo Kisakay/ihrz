@@ -50,7 +50,7 @@ export const subCommand: SubCommand = {
             var cooldown = interaction.options.getString("time")!;
         } else {
             var type = client.method.string(args!, 0)!;
-            var cooldown = client.method.string(args!, 1)!;
+            var cooldown = client.method.longString(args!, 1)!;
         };
 
         let time = client.timeCalculator.to_ms(cooldown);
