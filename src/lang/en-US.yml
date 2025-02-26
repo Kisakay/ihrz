@@ -192,7 +192,7 @@ transript_command_work: "You have closed your ticket. iHorizon sent you a transc
 transript_not_in_ticket: "You cannot use this command outside of a ticket channel !"
 
 # /disableticket
-disableticket_not_admin: ":x: | You must be an administrator of this server to do this command!"
+disableticket_not_admin: ":x: | You must be an administrator of this server to use this command!"
 disableticket_logs_embed_title_disable: "DisableTicket Logs"
 disableticket_logs_embed_description_disable: "<@${interaction.user.id}> disabled ticket commands !"
 disableticket_command_work_disable: "You have successfully disabled the ticket commands !"
@@ -201,7 +201,7 @@ disableticket_logs_embed_description_enable: "<@${interaction.user.id}> enabled 
 disableticket_command_work_enable: "You have successfully enabled the ticket commands !"
 
 # /setticketcategory
-setticketcategory_not_admin: ":x: | You must be an administrator of this server to do this command!"
+setticketcategory_not_admin: ":x: | You must be an administrator of this server to use this command!"
 setticketcategory_disabled_command: "You can't use this command because an Administrator disable the ticket commands !"
 setticketcategory_not_a_category: "The channel specified is not a category, please try again."
 setticketcategory_command_work: "<@${interaction.user.id}>, you have set the Category for the ticket channels to `${category.name}` !"
@@ -280,7 +280,7 @@ ticket_rename_error: "Error when renaming the text channel"
 # /level, /setxpchannels, /disablexp
 
 # /disablexp
-disablexp_not_admin: ":x: | You must be an administrator of this server to do this command!"
+disablexp_not_admin: ":x: | You must be an administrator of this server to use this command!"
 disablexp_logs_embed_title_disable: "Disable XP Logs"
 disablexp_logs_embed_description_disable: "<@${interaction.user.id}> disable xp !"
 disablexp_command_work_disable: "You have successfully disabled the leveling message (XP)"
@@ -290,7 +290,7 @@ disablexp_command_work_enable: "You have successfully enabled the leveling messa
 disablexp_command_work_disable_entierly: "You have successfully disabled the ranks module ! (No more messages, and users will not earn level)"
 
 # /setxpchannels
-setxpchannels_not_admin: ":x: | You must be an administrator of this server to do this command!"
+setxpchannels_not_admin: ":x: | You must be an administrator of this server to use this command!"
 setxpchannels_logs_embed_title_disable: "SetXpChannels Logs"
 setxpchannels_logs_embed_description_disable: "<@${interaction.user.id}> disabled the custom XP channels. I put the default settings..."
 setxpchannels_already_disabled_disable: "The custom xp channels is already disable !"
@@ -691,7 +691,7 @@ economy_leaderboard_embed_title: "Economy leaderboard of `${interaction.guild.na
 economy_leaderboard_embed_fields_value: "<@${userId}> - Bank: `${userData.bank || 0}`${client.iHorizon_Emojis.icon.Coin} | Balance: `${userData.money || 0}`${client.iHorizon_Emojis.icon.Coin}"
 
 # /economy disable
-economy_disable_not_admin: ":x: | You must be an administrator of this server to do this command!"
+economy_disable_not_admin: ":x: | You must be an administrator of this server to use this command!"
 economy_disable_already_disable: "<@${interaction.user.id}>, the Economy Module are already **disable** !"
 economy_disable_already_enable: "<@${interaction.user.id}>, the Economy Module are already **enable** !"
 economy_disable_set_enable: "<@${interaction.user.id}>, you have succeffully **enable** the Economy Module !"
