@@ -326,7 +326,7 @@ ranks_ignorechannels_embed_title: "Ranks Module Configurations"
 ranks_ignorechannels_embed_desc: "When new message are sent in one of this channels, Ranks Module ignore it."
 
 # /ranks set-message
-ranksSetMessage_not_admin: ":x: | You must be an administrator of this server to request this commands!"
+ranksSetMessage_not_admin: ":x: | You must be an administrator of this server to use these commands!"
 ranksSetMessage_help_embed_title: "/ranks set-message Help !" 
 ranksSetMessage_help_embed_description: "/ranks set-message"
 ranksSetMessage_help_embed_fields_name: "how to use ?"
@@ -1106,7 +1106,7 @@ setjoindm_buttom_delete_name: "Delete DM Message"
 setjoindm_awaiting_response: "Wrote the new custom JoinDM Message in the channel."
 
 # /setjoinmessage
-setjoinmessage_not_admin: ":x: | You must be an administrator of this server to request this commands!"
+setjoinmessage_not_admin: ":x: | You must be an administrator of this server to use these commands!"
 setjoinmessage_help_embed_title: "setjoinmessage Help !" 
 setjoinmessage_help_embed_description: "/setjoinmessage <Power on /Power off/Show the message set> <join message>"
 setjoinmessage_help_embed_fields_name: "how to use ?"
@@ -1164,7 +1164,7 @@ setjoinroles_warn_title: "Warning!"
 setjoinroles_timesup_button: "Time's up!"
 setjoinroles_action_canceled: "Action canceled"
 setjoinroles_too_highter_roles: "The following roles have a higher position compared to mine."
-setjoinroles_not_admin: ":x: | You must be an administrator of this server to request this commands!"
+setjoinroles_not_admin: ":x: | You must be an administrator of this server to use these commands!"
 setjoinroles_help_embed_title: "JoinRoles Module"
 setjoinroles_help_embed_description: "Here are all the roles I give to new members"
 setjoinroles_help_embed_fields_1_name: "All registered roles"
@@ -1173,7 +1173,7 @@ setjoinroles_logs_embed_description_on_enable: "<@${interaction.user.id}> set th
 setjoinroles_already_on_enable: "The join role is already configured with this role !"
 
 # /setleavemessage
-setleavemessage_not_admin: ":x: | You must be an administrator of this server to request this commands!"
+setleavemessage_not_admin: ":x: | You must be an administrator of this server to use these commands!"
 setleavemessage_help_embed_title: "/setleavemessage Help !"
 setleavemessage_help_embed_description: "/setleavemessage <Power on /Power off/Show the message set> <leave message>"
 setleavemessage_help_embed_fields_name: "how to use ?"
@@ -1280,7 +1280,7 @@ guildconfig_config_save_user_msg_2: "Here is the link to download the server bac
 guildconfig_config_restore_err_msg: "There was an error downloading the file."
 guildconfig_config_restore_msg: "The data has been set in my database."
 
-# /perm add
+# /perm add:x: | You must be an administrator of this server to use these commands!
 perm_add_args_error: "You have not specified the commands to change or the permission to set."
 
 # /perm list
@@ -1718,7 +1718,7 @@ report_specify: "Please specify the bug, Please make good and full sentences !"
 report_command_work: "**Thanks for submitting a bug!**"
 
 # /support
-support_not_admin: ":x: | You must be an administrator of this server to request this commands!"
+support_not_admin: ":x: | You must be an administrator of this server to use these commands!"
 support_command_work: "You have setup the support module for **${interaction.guild.name}**.\nWhen user have on this bio:\n**${input}**.\nI should give the <@&${roles.id}> role to them!"
 support_command_work_on_disable: "You have setup the support module for **${interaction.guild.name}**.\nNobody can have role now!"
 support_command_not_role: ":x: | You have not specified the role !"
