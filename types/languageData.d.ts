@@ -261,6 +261,8 @@ export interface LanguageData {
   ticket_panel_preview_message: string;
   ticket_panel_option_change_category: string;
   ticket_panel_panel_10_label: string;
+  ticket_panel_channel_panel_embed_id: string;
+  ticket_panel_panel_11_label: string;
   ticket_rename_ok: string;
   ticket_rename_error: string;
   disablexp_not_admin: string;
@@ -969,13 +971,13 @@ export interface LanguageData {
   joinghostping_remove_logs_embed_desc: string;
   automod_block_massmention_command_off: string;
   automod_block_massmention_command_on: string;
+  automod_block_massmention_command_error404: string;
   automod_block_link_command_on: string;
   automod_block_link_command_off: string;
   automod_block_pub_command_on: string;
   automod_block_pub_command_off: string;
   automod_block_spam_command_on: string;
   automod_block_spam_command_off: string;
-  automod_block_massmention_command_error404: string;
   too_new_account_dont_specified_time_on_enable: string;
   too_new_account_invalid_time_on_enable: string;
   too_new_account_logEmbed_title: string;

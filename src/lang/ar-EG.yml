@@ -271,6 +271,8 @@ ticket_panel_add_form_modal_field2_label: "النص التوضيحي للسؤا�
 ticket_panel_preview_message: "معاينة لوحة التذاكر"
 ticket_panel_option_change_category: "اختر خيارًا لتغيير الفئة"
 ticket_panel_panel_10_label: "تغيير الفئة لخيار واحد محدد"
+ticket_panel_channel_panel_embed_id: "معرف تضمين قناة التذاكر"
+ticket_panel_panel_11_label: "تغيير لوحة تضمين قناة التذاكر"
 
 # /ticket rename
 ticket_rename_ok: "تم تغيير اسم قناة التذكرة!"

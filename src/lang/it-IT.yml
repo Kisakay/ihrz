@@ -271,6 +271,8 @@ ticket_panel_add_form_modal_field2_label: "Segnaposto della Domanda"
 ticket_panel_preview_message: "Anteprima del pannello ticket"
 ticket_panel_option_change_category: "Seleziona un'opzione per cambiare categoria"
 ticket_panel_panel_10_label: "Cambia la categoria per un'opzione specifica"
+ticket_panel_channel_panel_embed_id: "ID embed del canale dei ticket"
+ticket_panel_panel_11_label: "Modifica pannello embed del canale dei ticket"
 
 # /ticket rename
 ticket_rename_ok: "Il canale del ticket è stato rinominato!"
