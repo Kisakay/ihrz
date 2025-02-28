@@ -1307,6 +1307,13 @@ perm_rmv_role: "Papel removido"
 perm_rmv_usr: "Usuário removido"
 perm_set_command_reset: "Este comando foi redefinido"
 perm_set_no_modified: "Nenhuma permissão modificada"
+perm_command_delete_dont_exist: "O comando especificado não tem nenhuma permissão definida."
+perm_command_delete_command_deleted: "Permissões eliminadas para o comando: `${commands}`"
+perm_command_delete_specify_command: "Precisa de especificar um comando para eliminar as suas permissões."
+perm_command_delete_all_one: "Precisa de especificar uma opção para eliminar uma permissão."
+perm_command_delete_all_one_option: "Só pode especificar uma opção para eliminar uma permissão."
+perm_command_delete_all_zero_change: "O tipo de permissão que especificou não foi utilizado em nenhum comando."
+perm_command_delete_all_command_ok: "\nForam eliminadas com sucesso **${changes.length}** permissões aninhadas do tipo `${type}` (${value}) da base de dados."
 
 # /perm roles
 perm_roles_created_role: "Созданы следующие роли: ${createdRoles.join(', ')}"

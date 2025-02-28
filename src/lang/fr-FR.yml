@@ -1307,6 +1307,13 @@ perm_rmv_role: "Rôle supprimé"
 perm_rmv_usr: "Utilisateur supprimé"
 perm_set_command_reset: "Cette commande a été réinitialisée"
 perm_set_no_modified: "Aucune permission modifiée"
+perm_command_delete_dont_exist: "La commande spécifiée n'a aucune permission définie."
+perm_command_delete_command_deleted: "Permissions supprimées pour la commande : `${commands}`"
+perm_command_delete_specify_command: "Vous devez spécifier une commande pour supprimer ses permissions."
+perm_command_delete_all_one: "Vous devez spécifier une option pour supprimer une permission."
+perm_command_delete_all_one_option: "Vous ne pouvez spécifier qu'une seule option pour supprimer une permission."
+perm_command_delete_all_zero_change: "Le type de permission que vous avez spécifié n'a été utilisé dans aucune commande."
+perm_command_delete_all_command_ok: "\n**${changes.length}** permissions imbriquées de type `${type}` (${value}) ont été supprimées avec succès de la base de données."
 
 # /perm roles
 perm_roles_created_role: "Les rôles suivants ont été créés : ${createdRoles.join(', ')}"

@@ -1020,6 +1020,13 @@ export interface LanguageData {
   perm_rmv_usr: string;
   perm_set_command_reset: string;
   perm_set_no_modified: string;
+  perm_command_delete_dont_exist: string;
+  perm_command_delete_command_deleted: string;
+  perm_command_delete_specify_command: string;
+  perm_command_delete_all_one: string;
+  perm_command_delete_all_one_option: string;
+  perm_command_delete_all_zero_change: string;
+  perm_command_delete_all_command_ok: string;
   perm_roles_created_role: string;
   perm_roles_already_upate: string;
   perm_roles_error: string;

@@ -1307,6 +1307,13 @@ perm_rmv_role: "Rol eliminado"
 perm_rmv_usr: "Usuario eliminado"
 perm_set_command_reset: "Este comando ha sido restablecido"
 perm_set_no_modified: "No se modificaron permisos"
+perm_command_delete_dont_exist: "El comando especificado no tiene ningún permiso establecido."
+perm_command_delete_command_deleted: "Permisos eliminados para el comando: `${commands}`"
+perm_command_delete_specify_command: "Necesitas especificar un comando para eliminar sus permisos."
+perm_command_delete_all_one: "Necesitas especificar una opción para eliminar un permiso."
+perm_command_delete_all_one_option: "Solo puedes especificar una opción para eliminar un permiso."
+perm_command_delete_all_zero_change: "El tipo de permiso que especificaste no se utilizó en ningún comando."
+perm_command_delete_all_command_ok: "\nSe eliminaron correctamente **${changes.length}** permisos anidados de tipo `${type}` (${value}) de la base de datos."
 
 # /perm roles
 perm_roles_created_role: "Se han creado los siguientes roles: ${createdRoles.join(', ')}"
