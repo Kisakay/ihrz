@@ -393,7 +393,7 @@ export const subCommand: SubCommand = {
                         if (roleIndex !== -1) {
                             permData.roles.splice(roleIndex, 1);
                             await client.db.set(`${interaction.guildId}.UTILS.PERMS.${commandName}`, permData);
-                            changes.push(`- ${commandName} (${lang.var_roles}: ${customRole.toString()})\n`);
+                            changes.push(`- ${commandName} (${lang.var_roles}: @${customRole.name})\n`);
                         }
                     }
                 }
