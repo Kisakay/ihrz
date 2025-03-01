@@ -27,7 +27,7 @@ import {
 import { DatabaseStructure } from "../../../types/database_structure.js";
 import { LanguageData } from "../../../types/languageData.js";
 
-type command = {
+export type command = {
     users: string[];
     roles: string[];
     level: number;

@@ -325,7 +325,7 @@ export class FunctionAnalyzer {
             'super', 'switch', 'this', 'throw', 'true', 'try', 'typeof',
             'var', 'void', 'while', 'with', 'implements', 'interface',
             'let', 'package', 'private', 'protected', 'public', 'static',
-            'yield', 'any', 'boolean', 'number', 'string', 'symbol'
+            'yield', 'any', 'boolean', 'symbol'
         ]);
 
         if (reservedKeywords.has(sanitized)) {
