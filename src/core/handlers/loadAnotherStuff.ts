@@ -34,9 +34,6 @@ type FunctionModule = {
 };
 
 export default async (client: Client) => {
-    client.selectmenu = new Collection<string, Function>();
-    client.buttons = new Collection<string, Function>();
-    client.func = {} as typeof Client_Functions;
 
     (await readdir(path.join(__dirname, '..', '..', 'Interaction', 'Components', 'Buttons')))
         .filter(file => file.endsWith(".js"))

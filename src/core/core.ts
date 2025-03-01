@@ -53,6 +53,8 @@ import { mkdir, readdir } from 'node:fs/promises';
 import { MemberCountModule } from './modules/memberCountManager.js';
 import { AutoRenew } from './modules/autorenewManager.js';
 import config from '../files/config.js';
+import { Client_Functions } from '../../types/client_functions.js';
+import { AnotherCommand } from '../../types/anotherCommand.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -97,6 +99,11 @@ export async function main(client: Client) {
     client.vanityInvites = new Collection<Snowflake, VanityInviteData>();
     client.ownihrz = new OwnIHRZ(client)
     client.kdenlive = new KdenLive();
+    client.selectmenu = new Collection<string, Function>();
+    client.buttons = new Collection<string, Function>();
+    client.func = {} as typeof Client_Functions;
+    client.htmlfiles = {};
+    client.applicationsCommands = new Collection<string, AnotherCommand>();
 
     process.on('SIGINT', async () => {
         if (client.config.core.shutdownClusterWhenStop) await client.ownihrz.QuitProgram();
