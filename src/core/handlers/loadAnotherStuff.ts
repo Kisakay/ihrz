@@ -29,7 +29,7 @@ import { Client_Functions } from '../../../types/client_functions.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-type FunctionModule = {
+export type FunctionModule = {
     [K in keyof typeof Client_Functions]: typeof Client_Functions[K]
 };
 
