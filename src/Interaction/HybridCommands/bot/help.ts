@@ -122,7 +122,7 @@ async function handleCategorySelect(
                 .replaceAll('${client.iHorizon_Emojis.vc.Region}', client.iHorizon_Emojis.vc.Region)
                 .replaceAll('${client.iHorizon_Emojis.badge.Slash_Bot}', client.iHorizon_Emojis.badge.Slash_Bot)
             )
-            .setFooter(await client.method.bot.footerBuilder(i))
+            .setFooter(await client.func.displayBotName.footerBuilder(i))
             .setImage(`https://ihorizon.me/assets/img/banner/ihrz_${await client.db.get(`${i.guildId}.GUILD.LANG.lang`) || 'en-US'}.png`)
             .setThumbnail("attachment://footer_icon.png")
             .setTimestamp();
@@ -142,7 +142,7 @@ async function handleCategorySelect(
         .setTitle(`${category.emoji}・${category.name}`)
         .setDescription(category.description)
         .setColor(category.color as ColorResolvable)
-        .setFooter(await client.method.bot.footerBuilder(i))
+        .setFooter(await client.func.displayBotName.footerBuilder(i))
         .setThumbnail("attachment://footer_icon.png")
         .setTimestamp();
 
@@ -219,7 +219,7 @@ async function handleCategorySelect(
                 .setTitle(`${category.emoji}・${category.name}`)
                 .setDescription(category.description)
                 .setColor(category.color as ColorResolvable)
-                .setFooter(await client.method.bot.footerBuilder(i))
+                .setFooter(await client.func.displayBotName.footerBuilder(i))
                 .setThumbnail("attachment://footer_icon.png")
                 .setTimestamp();
             currentFieldsLength = 0;
@@ -415,7 +415,7 @@ export const command: Command = {
                     .replaceAll('${client.iHorizon_Emojis.vc.Region}', client.iHorizon_Emojis.vc.Region)
                     .replaceAll('${client.iHorizon_Emojis.badge.Slash_Bot}', client.iHorizon_Emojis.badge.Slash_Bot)
                 )
-                .setFooter(await client.method.bot.footerBuilder(interaction))
+                .setFooter(await client.func.displayBotName.footerBuilder(interaction))
                 .setImage(`https://ihorizon.me/assets/img/banner/ihrz_${await client.db.get(`${interaction.guildId}.GUILD.LANG.lang`) || 'en-US'}.png`)
                 .setThumbnail("attachment://footer_icon.png")
                 .setTimestamp();
@@ -423,7 +423,7 @@ export const command: Command = {
             let response = await client.method.interactionSend(interaction, {
                 embeds: [og_embed],
                 components: rows,
-                files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+                files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
             });
 
             let collector = response.createMessageComponentCollector({ componentType: ComponentType.StringSelect, time: 840000 });
@@ -472,7 +472,7 @@ export const command: Command = {
             await client.method.interactionSend(interaction, {
                 embeds: [await client.method.createAwesomeEmbed(lang, fetchCommand, client, interaction)],
                 ephemeral: true,
-                files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+                files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
             });
         }
     },

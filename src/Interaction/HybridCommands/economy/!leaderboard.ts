@@ -123,7 +123,7 @@ export const subCommand: SubCommand = {
             return embed;
         };
 
-        const image = await client.method.imageManipulation.html2Png(htmlContent, {
+        const image = await client.func.html2png(htmlContent, {
             elementSelector: 'body',
             omitBackground: true,
             selectElement: false,
@@ -171,7 +171,7 @@ export const subCommand: SubCommand = {
         const message = await client.method.interactionSend(interaction, {
             embeds: [createEmbed(currentPage)],
             components: [createButtons(currentPage)],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction), attachment]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction), attachment]
         });
 
         const collector = message.createMessageComponentCollector({

@@ -100,7 +100,7 @@ export const subCommand: SubCommand = {
         let messageEmbed = await client.method.interactionSend(interaction, {
             embeds: [createEmbed()],
             components: [(row as ActionRowBuilder<ButtonBuilder>)],
-            files: [attachment, await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [attachment, await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
 
         let collector = messageEmbed.createMessageComponentCollector({

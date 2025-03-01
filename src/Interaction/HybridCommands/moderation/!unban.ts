@@ -86,7 +86,7 @@ export const subCommand: SubCommand = {
             })
             .catch((err: string) => logger.err(err));
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.unban_logs_embed_title,
             description: lang.unban_logs_embed_description
                 .replace(/\${userID}/g, userID as string)

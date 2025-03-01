@@ -84,7 +84,7 @@ export const subCommand: SubCommand = {
                             .replace(/\${messages\.size}/g, messages.size.toString())
                     });
 
-                    await client.method.iHorizonLogs.send(interaction, {
+                    await client.func.ihorizon_logs(interaction, {
                         title: lang.clear_logs_embed_title,
                         description: lang.clear_logs_embed_description
                             .replace(/\${interaction\.user\.id}/g, interaction.member?.user.id!)
@@ -102,7 +102,7 @@ export const subCommand: SubCommand = {
                             .replace(/\${messages\.size}/g, messages.size.toString())
                     });
 
-                    await client.method.iHorizonLogs.send(interaction, {
+                    await client.func.ihorizon_logs(interaction, {
                         title: lang.clear_logs_embed_title,
                         description: lang.clear_logs_embed_description
                             .replace(/\${interaction\.user\.id}/g, interaction.member?.user.id!)

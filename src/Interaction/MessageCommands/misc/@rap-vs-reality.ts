@@ -77,7 +77,7 @@ export const command: Command = {
     ) => {
         if (interaction.guild.preferredLocale !== 'fr') return;
 
-        if (await client.method.helper.coolDown(interaction, "media_manipulation", client.timeCalculator.to_ms("1m30s")!)) {
+        if (await client.func.helper.coolDown(interaction, "media_manipulation", client.timeCalculator.to_ms("1m30s")!)) {
             return interaction.reply({ content: lang.media_gen_cooldown })
         };
 

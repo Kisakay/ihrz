@@ -50,7 +50,7 @@ export const subCommand: SubCommand = {
                 content: lang.perm_set_deleted.replace("${user.toString()}", user.toString())
             });
         } else {
-            let fetchedPerm = await client.method.permission.checkUserPermissions(
+            let fetchedPerm = await client.func.permissonsCalculator.checkUserPermissions(
                 interaction.member,
             );
 

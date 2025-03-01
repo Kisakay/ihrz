@@ -66,7 +66,7 @@ export const subCommand: SubCommand = {
 
         await client.db.add(`${interaction.guildId}.USER.${user?.id}.ECONOMY.money`, amount);
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.addmoney_logs_embed_title,
             description: lang.addmoney_logs_embed_description
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)

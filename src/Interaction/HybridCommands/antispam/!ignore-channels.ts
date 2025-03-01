@@ -62,7 +62,7 @@ export const subCommand: SubCommand = {
                     ? all_channels.map(x => `<#${x}>`).join(', ')
                     : lang.setjoinroles_var_none
             })
-            .setFooter(await client.method.bot.footerBuilder(interaction));
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
         const select = new ChannelSelectMenuBuilder()
             .setCustomId('antispam-select-config')
@@ -87,7 +87,7 @@ export const subCommand: SubCommand = {
                 new ActionRowBuilder<ChannelSelectMenuBuilder>().addComponents(select),
                 new ActionRowBuilder<ButtonBuilder>().addComponents(button)
             ],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
 
         const collector = originalResponse.createMessageComponentCollector({

@@ -122,7 +122,7 @@ export const subCommand: SubCommand = {
             embeds: [generateEmbed(currentPage)],
             components: [generateButtons(currentPage)],
             files: [
-                await interaction.client.method.bot.footerAttachmentBuilder(interaction),
+                await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction),
                 { attachment: (await interaction.client.func.image64((interaction.member as GuildMember).user.displayAvatarURL())) ?? Buffer.alloc(0), name: 'user_icon.png' }
             ]
         });

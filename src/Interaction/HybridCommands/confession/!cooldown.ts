@@ -64,7 +64,7 @@ export const subCommand: SubCommand = {
                 .replace('${client.timeCalculator.to_beautiful_string(time)}', client.timeCalculator.to_beautiful_string(time, lang))
         });
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.confession_cooldown_log_embed_title,
             description: lang.confession_cooldown_log_embed_desc
                 .replace('${interaction.user}', interaction.member.user.toString())

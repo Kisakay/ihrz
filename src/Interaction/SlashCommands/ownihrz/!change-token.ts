@@ -98,12 +98,12 @@ export const subCommand: SubCommand = {
             .setDescription(lang.mybot_manage_accept_embed_desc
                 .replace('${utils_msg}', utils_msg)
             )
-            .setFooter(await client.method.bot.footerBuilder(interaction));
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
         await client.method.interactionSend(interaction, {
             embeds: [embed],
             ephemeral: false,
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
 
         try {

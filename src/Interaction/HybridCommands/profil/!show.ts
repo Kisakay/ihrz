@@ -87,11 +87,11 @@ export const subCommand: SubCommand = {
             .setColor("#ffa550")
             .setThumbnail(member.displayAvatarURL({ extension: 'png', size: 1024 }))
             .setTimestamp()
-            .setFooter(await client.method.bot.footerBuilder(interaction))
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction))
 
         await client.method.interactionSend(interaction, {
             embeds: [profil],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
         return;
     },

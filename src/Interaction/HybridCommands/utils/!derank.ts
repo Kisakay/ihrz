@@ -89,11 +89,11 @@ export const subCommand: SubCommand = {
                         .replace('${bad}', bad.toString())
                         .replace('${member.id}', member.id)
                     )
-                    .setFooter(await client.method.bot.footerBuilder(interaction));
+                    .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
                 await client.method.interactionSend(interaction, {
                     embeds: [embed],
-                    files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+                    files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
                 });
             })
             .catch(err => {

@@ -64,7 +64,7 @@ export const subCommand: SubCommand = {
 
         let embed = new EmbedBuilder()
             .setColor('#ff05aa')
-            .setFooter(await client.method.bot.footerBuilder(interaction))
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction))
             .setTimestamp()
             .setDescription(lang.confession_channel_panel_embed_desc)
             ;
@@ -80,7 +80,7 @@ export const subCommand: SubCommand = {
 
         let message = await (channel as BaseGuildTextChannel).send({
             embeds: [embed],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)],
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)],
             components: [actionRow],
             enforceNonce: true,
             nonce: nonce
@@ -91,7 +91,7 @@ export const subCommand: SubCommand = {
             messageId: message.id
         });
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.confession_channel_log_embed_title,
             description: lang.confession_channel_log_embed_desc
                 .replace('${interaction.user}', interaction.member.user.toString())

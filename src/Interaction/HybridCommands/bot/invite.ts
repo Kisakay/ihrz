@@ -63,7 +63,7 @@ export const command: Command = {
             .setTitle(lang.invite_embed_title)
             .setDescription(lang.invite_embed_description)
             .setURL('https://discord.com/api/oauth2/authorize?client_id=' + client.user?.id + '&permissions=8&scope=bot')
-            .setFooter(await client.method.bot.footerBuilder(interaction))
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction))
             .setThumbnail("attachment://footer_icon.png");
 
         let components = new ActionRowBuilder<ButtonBuilder>().addComponents(button_add_me);
@@ -71,7 +71,7 @@ export const command: Command = {
         await client.method.interactionSend(interaction, {
             embeds: [invites],
             components: [components],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
         return;
     },

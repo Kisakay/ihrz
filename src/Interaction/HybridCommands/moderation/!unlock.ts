@@ -52,7 +52,7 @@ export const subCommand: SubCommand = {
         };
 
         await (interaction.channel as BaseGuildTextChannel).permissionOverwrites.create(role?.id || interaction.guild.roles.everyone.id, { SendMessages: true });
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.unlock_logs_embed_title,
             description: lang.unlock_logs_embed_description
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)

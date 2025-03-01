@@ -68,7 +68,7 @@ export default async (client: Client) => {
             .replace("{song_thumbnail}", track?.info.artworkUrl as string)
             ;
 
-        const image = await client.method.imageManipulation.html2Png(htmlContent, {
+        const image = await client.func.html2png(htmlContent, {
             omitBackground: true,
             selectElement: true,
             elementSelector: ".spotify-banner",

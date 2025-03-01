@@ -59,7 +59,7 @@ export const subCommand: SubCommand = {
                     ? all_roles.map(x => `<@&${x}>`).join(', ')
                     : lang.setjoinroles_var_none
             })
-            .setFooter(await client.method.bot.footerBuilder(interaction));
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
         const select = new RoleSelectMenuBuilder()
             .setCustomId('antispam-select-config')

@@ -149,7 +149,7 @@ export const subCommand: SubCommand = {
                     newEmbed.addFields(helpEmbed.data.fields![1]);
                     await message.edit({ embeds: [newEmbed] });
 
-                    // await client.method.iHorizonLogs.send(interaction, {
+                    // await client.func.ihorizon_logs(interaction, {
                     //     title: lang.ranksSetMessage_logs_embed_title_on_enable,
                     //     description: lang.ranksSetMessage_logs_embed_description_on_enable
                     //         .replace("${interaction.user.id}", interaction.user.id)
@@ -175,7 +175,7 @@ export const subCommand: SubCommand = {
                 newEmbed.addFields(helpEmbed.data.fields![1]);
                 await message.edit({ embeds: [newEmbed] });
 
-                // await client.method.iHorizonLogs.send(interaction, {
+                // await client.func.ihorizon_logs(interaction, {
                 //     title: lang.ranksSetMessage_logs_embed_title_on_disable,
                 //     description: lang.ranksSetMessage_logs_embed_description_on_disable
                 //         .replace("${interaction.user.id}", interaction.user.id)

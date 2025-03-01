@@ -136,7 +136,7 @@ export const command: Command = {
         await client.db.set(`${interaction.guildId}.GUILD.LANG`, { lang: type });
         lang = await client.func.getLanguageData(interaction.guildId);
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.setserverlang_logs_embed_title_on_enable,
             description: lang.setserverlang_logs_embed_description_on_enable
                 .replace(/\${type}/g, type!)

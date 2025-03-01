@@ -67,7 +67,7 @@ export const subCommand: SubCommand = {
                 return;
             };
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.setrankroles_logs_embed_title_enable,
                 description: lang.setrankroles_logs_embed_description_enable
                     .replace(/\${interaction\.user.id}/g, interaction.member.user.id)
@@ -112,7 +112,7 @@ export const subCommand: SubCommand = {
                 return;
             }
         } else if (type == "off") {
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.setrankroles_logs_embed_title_disable,
                 description: lang.setrankroles_logs_embed_description_disable
                     .replace(/\${interaction\.user.id}/g, interaction.member.user.id)

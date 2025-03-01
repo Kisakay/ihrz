@@ -48,7 +48,7 @@ export const subCommand: SubCommand = {
         };
 
         if (types == "off") {
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.disablexp_logs_embed_title_disable,
                 description: lang.disablexp_logs_embed_description_disable.replace(/\${interaction\.user\.id}/g, interaction.member.user.id)
             });
@@ -59,7 +59,7 @@ export const subCommand: SubCommand = {
             return;
         } else if (types == "disable") {
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.disablexp_logs_embed_title_disable,
                 description: lang.disablexp_logs_embed_description_disable.replace(/\${interaction\.user\.id}/g, interaction.member.user.id)
             });
@@ -69,7 +69,7 @@ export const subCommand: SubCommand = {
             await client.method.interactionSend(interaction, { content: lang.disablexp_command_work_disable_entierly });
             return;
         } else if (types == "on") {
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.disablexp_logs_embed_title_enable,
                 description: lang.disablexp_logs_embed_description_enable.replace(/\${interaction\.user\.id}/g, interaction.member.user.id)
             });

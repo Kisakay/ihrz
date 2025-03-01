@@ -93,7 +93,7 @@ export const subCommand: SubCommand = {
 
 		// Emit a logs in the ihorizon-logs
 
-		await client.method.iHorizonLogs.send(interaction, {
+		await client.func.ihorizon_logs(interaction, {
 			title: lang.vkick_logEmbed_title,
 			description: lang.vkick_logEmbed_desc
 				.replace("${interaction.member.user.toString()}", interaction.member.user.toString())

@@ -183,7 +183,7 @@ export const command: Command = {
                         }
                     );
 
-                    await client.method.iHorizonLogs.send(interaction, {
+                    await client.func.ihorizon_logs(interaction, {
                         title: lang.reactionroles_logs_embed_title_added,
                         description: lang.reactionroles_logs_embed_description_added
                             .replace("${interaction.user.id}", interaction.member?.user.id!)
@@ -234,7 +234,7 @@ export const command: Command = {
 
             await client.db.delete(`${interaction.guildId}.GUILD.REACTION_ROLES.${messagei}.${reaction}`);
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.reactionroles_logs_embed_title_remove,
                 description: lang.reactionroles_logs_embed_description_remove
                     .replace("${interaction.user.id}", interaction.member.user.id)

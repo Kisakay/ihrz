@@ -198,7 +198,7 @@ export const command: Command = {
                 return;
             }
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.setmembercount_logs_embed_title_on_enable,
                 description: lang.setmembercount_logs_embed_description_on_enable
                     .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)
@@ -217,7 +217,7 @@ export const command: Command = {
         } else if (type == "off") {
             await client.db.delete(`${interaction.guildId}.GUILD.MCOUNT`);
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.setmembercount_logs_embed_title_on_disable,
                 description: lang.setmembercount_logs_embed_description_on_disable
                     .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)

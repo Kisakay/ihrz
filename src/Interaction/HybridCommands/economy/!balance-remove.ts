@@ -67,7 +67,7 @@ export const subCommand: SubCommand = {
             .setColor("#bc0116")
             .setTimestamp()
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.removemoney_logs_embed_title,
             description: lang.removemoney_logs_embed_description
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)

@@ -69,7 +69,7 @@ export const subCommand: SubCommand = {
                 .replace(/\${timeEstimate}/g, "0")
         });
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.end_logs_embed_title,
             description: lang.end_logs_embed_description
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)

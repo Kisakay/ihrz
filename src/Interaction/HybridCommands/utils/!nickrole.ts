@@ -93,7 +93,7 @@ export const subCommand: SubCommand = {
             } catch (error) { }
 
             let embed = new EmbedBuilder()
-                .setFooter(await client.method.bot.footerBuilder(interaction))
+                .setFooter(await client.func.displayBotName.footerBuilder(interaction))
                 .setColor('#007fff')
                 .setTimestamp()
                 .setThumbnail(interaction.guild.iconURL())
@@ -108,7 +108,7 @@ export const subCommand: SubCommand = {
 
             await client.method.interactionSend(interaction, {
                 embeds: [embed],
-                files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+                files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
             });
             return;
 
@@ -142,7 +142,7 @@ export const subCommand: SubCommand = {
             } catch (error) { }
 
             let embed = new EmbedBuilder()
-                .setFooter(await client.method.bot.footerBuilder(interaction))
+                .setFooter(await client.func.displayBotName.footerBuilder(interaction))
                 .setColor('#007fff')
                 .setTimestamp()
                 .setThumbnail(interaction.guild.iconURL())
@@ -157,7 +157,7 @@ export const subCommand: SubCommand = {
 
             await client.method.interactionSend(interaction, {
                 embeds: [embed],
-                files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+                files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
             });
             return;
         };

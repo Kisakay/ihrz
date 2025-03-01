@@ -76,7 +76,7 @@ export const subCommand: SubCommand = {
                     .replace("${backupData.id}", backupData.id)
             });
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.backup_logs_embed_title_on_creation,
                 description: lang.backup_logs_embed_description_on_creation
                     .replace('${interaction.user.id}', interaction.member?.user.id!)

@@ -98,14 +98,14 @@ export const subCommand: SubCommand = {
                     .replace('${user2.username}', user2.username)
                     .replace('${randomNumber}', randomNumber.toString())
                 )
-                .setFooter(await client.method.bot.footerBuilder(interaction))
+                .setFooter(await client.func.displayBotName.footerBuilder(interaction))
                 .setTimestamp();
 
             await client.method.interactionSend(interaction, {
                 embeds: [embed],
                 files: [
                     { attachment: buffer, name: 'love.png' },
-                    await interaction.client.method.bot.footerAttachmentBuilder(interaction),
+                    await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction),
                 ]
             });
         } catch (error: any) {

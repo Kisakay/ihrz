@@ -216,7 +216,7 @@ export const subCommand: SubCommand = {
             .replace('{ timeLabels }', JSON.stringify(timeLabels))
             ;
 
-        const image = await client.method.imageManipulation.html2Png(htmlContent, {
+        const image = await client.func.html2png(htmlContent, {
             elementSelector: '.card',
             omitBackground: true,
             selectElement: true,

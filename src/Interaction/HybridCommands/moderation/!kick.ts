@@ -104,12 +104,12 @@ export const subCommand: SubCommand = {
                         { name: lang.var_author, value: interaction.member?.toString()!, inline: true },
                         { name: lang.var_reason, value: reason || lang.var_no_set, inline: true }
                     )
-                    .setFooter(await client.method.bot.footerBuilder(interaction))
+                    .setFooter(await client.func.displayBotName.footerBuilder(interaction))
             ],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.kick_logs_embed_title,
             description: lang.kick_logs_embed_description
                 .replace(/\${member\.user}/g, member.user.toString())

@@ -67,7 +67,7 @@ export const subCommand: SubCommand = {
                 .replace("${warnId}", warnId)
         })
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.warn_logEmbed_title,
             description: lang.warn_logEmbed_desc
                 .replace("${interaction.member.toString()}", interaction.member.toString())

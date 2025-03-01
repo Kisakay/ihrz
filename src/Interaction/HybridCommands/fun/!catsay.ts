@@ -69,7 +69,7 @@ export const subCommand: SubCommand = {
       .setColor('#000000')
       .setImage('attachment://catsay.png')
       .setTimestamp()
-      .setFooter(await client.method.bot.footerBuilder(interaction));
+      .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
     let imgs: AttachmentBuilder | undefined;
 
@@ -80,7 +80,7 @@ export const subCommand: SubCommand = {
       if (imgs) {
         await client.method.interactionSend(interaction, {
           embeds: [embed],
-          files: [imgs, await interaction.client.method.bot.footerAttachmentBuilder(interaction)]
+          files: [imgs, await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
       };
 

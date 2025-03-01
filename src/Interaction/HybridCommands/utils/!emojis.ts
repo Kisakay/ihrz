@@ -82,7 +82,7 @@ export const subCommand: SubCommand = {
 
         let embed = new EmbedBuilder()
             .setColor('#bea9de')
-            .setFooter(await client.method.bot.footerBuilder(interaction))
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction))
             .setTimestamp()
             .setDescription(lang.emoji_embed_desc_work
                 .replace('${cnt}', cnt.toString())
@@ -92,7 +92,7 @@ export const subCommand: SubCommand = {
 
         await client.method.interactionSend(interaction, {
             embeds: [embed],
-            files: [await interaction.client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
         return;
     },

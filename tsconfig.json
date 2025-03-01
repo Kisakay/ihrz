@@ -9,6 +9,7 @@
     "useUnknownInCatchVariables": true,
     "allowUnreachableCode": false,
     "esModuleInterop": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "importHelpers": true,
     "strictPropertyInitialization": false,

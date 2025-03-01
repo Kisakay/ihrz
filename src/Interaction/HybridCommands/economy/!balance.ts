@@ -74,12 +74,12 @@ export const subCommand: SubCommand = {
                 { name: lang.balance_embed_fields2_name, value: `${baseData.money || 0}${client.iHorizon_Emojis.icon.Coin}`, inline: true },
                 { name: lang.var_boost, value: `${possibleBoost}x`, inline: true }
             )
-            .setFooter(await client.method.bot.footerBuilder(interaction))
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction))
             .setTimestamp()
 
         await client.method.interactionSend(interaction, {
             embeds: [embed],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
         return;
     },

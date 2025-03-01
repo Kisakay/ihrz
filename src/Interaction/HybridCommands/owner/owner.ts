@@ -85,7 +85,7 @@ export const command: Command = {
             .setColor("#2E2EFE")
             .setAuthor({ name: "Owners" })
             .setDescription(text)
-            .setFooter(await client.method.bot.footerBuilder(interaction));
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
         if (interaction instanceof ChatInputCommandInteraction) {
             var member = interaction.options.getUser('member');
@@ -94,7 +94,7 @@ export const command: Command = {
         };
 
         if (!member) {
-            await client.method.interactionSend(interaction, { embeds: [embed], files: [await client.method.bot.footerAttachmentBuilder(interaction)] });
+            await client.method.interactionSend(interaction, { embeds: [embed], files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)] });
             return;
         };
 

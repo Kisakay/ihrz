@@ -104,7 +104,7 @@ export const subCommand: SubCommand = {
             .setColor("#6666ff")
             .setTitle(lang.antispam_manage_embed_title)
             .setThumbnail(interaction.guild.iconURL({ forceStatic: false })!)
-            .setFooter(await client.method.bot.footerBuilder(interaction));
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
         const choices: {
             label: string;
@@ -260,7 +260,7 @@ export const subCommand: SubCommand = {
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(select),
                 new ActionRowBuilder<ButtonBuilder>().addComponents(button, button2)
             ],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
 
         const collector = originalResponse.createMessageComponentCollector({

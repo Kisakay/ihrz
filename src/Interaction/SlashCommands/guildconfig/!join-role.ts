@@ -163,7 +163,7 @@ export const subCommand: SubCommand = {
 
                 await og_response.edit({ components: [newComp_2] })
 
-                await client.method.iHorizonLogs.send(interaction, {
+                await client.func.ihorizon_logs(interaction, {
                     title: lang.setjoinroles_logs_embed_title_on_enable,
                     description: lang.setjoinroles_logs_embed_description_on_enable
                         .replace("${interaction.user.id}", interaction.member?.user.id!)

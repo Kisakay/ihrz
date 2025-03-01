@@ -201,7 +201,7 @@ export const subCommand: SubCommand = {
 
                     await message2.edit({ embeds: emb, files: files });
 
-                    await client.method.iHorizonLogs.send(interaction, {
+                    await client.func.ihorizon_logs(interaction, {
                         title: lang.setjoinmessage_logs_embed_title_on_enable,
                         description: lang.setjoinmessage_logs_embed_description_on_enable
                             .replace("${interaction.user.id}", interaction.user.id)
@@ -233,7 +233,7 @@ export const subCommand: SubCommand = {
 
                 await message2.edit({ embeds: emb, files: files });
 
-                await client.method.iHorizonLogs.send(interaction, {
+                await client.func.ihorizon_logs(interaction, {
                     title: lang.setjoinmessage_logs_embed_title_on_disable,
                     description: lang.setjoinmessage_logs_embed_description_on_disable
                         .replace("${interaction.user.id}", interaction.user.id)

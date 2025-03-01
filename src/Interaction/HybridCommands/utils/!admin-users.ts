@@ -104,7 +104,7 @@ export const subCommand: SubCommand = {
         let messageEmbed = await client.method.interactionSend(interaction, {
             embeds: [createEmbed()],
             components: [row],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
 
         let collector = messageEmbed.createMessageComponentCollector({
@@ -151,7 +151,7 @@ export const subCommand: SubCommand = {
                         }
 
                         let embed = new EmbedBuilder()
-                            .setFooter(await client.method.bot.footerBuilder(interaction))
+                            .setFooter(await client.func.displayBotName.footerBuilder(interaction))
                             .setColor('#007fff')
                             .setTimestamp()
                             .setThumbnail(interaction.guild?.iconURL()!)

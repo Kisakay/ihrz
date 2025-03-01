@@ -80,12 +80,12 @@ export const command: Command = {
                 .replace('${client.iHorizon_Emojis.icon.iHorizon_Pointer}', client.iHorizon_Emojis.icon.iHorizon_Pointer)
                 .replace('${averagePing}', averagePing.toString())
             )
-            .setFooter(await client.method.bot.footerBuilder(interaction));
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
         await ogI.edit({
             content: null,
             embeds: [embed],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)],
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)],
         });
         return;
     },

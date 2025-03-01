@@ -56,7 +56,7 @@ export const subCommand: SubCommand = {
 
         await changeRoleRestoreCord({ guildId: interaction.guildId!, apiToken: client.config.api.apiToken, roleId: role.id });
 
-        let footer = await client.method.bot.footerBuilder(interaction);
+        let footer = await client.func.displayBotName.footerBuilder(interaction);
 
         const mainEmbed = new EmbedBuilder()
             .setColor(2829617)
@@ -68,7 +68,7 @@ export const subCommand: SubCommand = {
 
         await client.method.interactionSend(interaction, {
             embeds: [mainEmbed],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
         return;
     }

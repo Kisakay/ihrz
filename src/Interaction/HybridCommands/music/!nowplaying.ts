@@ -91,7 +91,7 @@ export const subCommand: SubCommand = {
             .replace("{time1}", progress.currentTime)
             .replace("{time2}", progress.totalTime);
 
-        const image = await client.method.imageManipulation.html2Png(htmlContent, {
+        const image = await client.func.html2png(htmlContent, {
             omitBackground: true,
             selectElement: false,
         });
@@ -133,7 +133,7 @@ export const subCommand: SubCommand = {
                     .replace("{time1}", progress.currentTime)
                     .replace("{time2}", progress.totalTime);
 
-                const image = await client.method.imageManipulation.html2Png(htmlContent, {
+                const image = await client.func.html2png(htmlContent, {
                     omitBackground: true,
                     selectElement: false,
                 });
@@ -207,10 +207,10 @@ export const subCommand: SubCommand = {
                                         })
                                         .setDescription(trimmedLyrics.length === 1997 ? `${trimmedLyrics}...` : trimmedLyrics)
                                         .setColor('#cd703a')
-                                        .setFooter(await client.method.bot.footerBuilder(interaction));
+                                        .setFooter(await client.func.displayBotName.footerBuilder(interaction));
                                     i.editReply({
                                         embeds: [embed],
-                                        files: [await interaction.client.method.bot.footerAttachmentBuilder(interaction)]
+                                        files: [await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction)]
                                     });
                                 };
                                 break;

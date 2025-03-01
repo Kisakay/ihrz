@@ -66,7 +66,7 @@ export const subCommand: SubCommand = {
 
         await client.method.interactionSend(interaction, { content: lang.reroll_command_work });
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.reroll_logs_embed_title,
             description: lang.reroll_logs_embed_description
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)

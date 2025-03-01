@@ -95,7 +95,7 @@ export const subCommand: SubCommand = {
                 .setTitle(lang.leaderboard_default_text + " • " + interaction.guild?.name)
                 .setDescription(pageText)
                 .setTimestamp()
-                .setFooter(await client.method.bot.footerBuilder(interaction))
+                .setFooter(await client.func.displayBotName.footerBuilder(interaction))
                 .setThumbnail("attachment://guildIcon.png");
         };
 
@@ -115,7 +115,7 @@ export const subCommand: SubCommand = {
                     .setDisabled(arr.length <= itemsPerPage)
             )],
             files: [
-                await interaction.client.method.bot.footerAttachmentBuilder(interaction),
+                await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction),
                 { attachment: (await interaction.client.func.image64(interaction.guild.iconURL({ size: 512 }) || interaction.client.user?.displayAvatarURL())) ?? Buffer.from([]), name: 'guildIcon.png' }
             ]
         });

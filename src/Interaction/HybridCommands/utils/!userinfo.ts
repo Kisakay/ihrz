@@ -159,7 +159,7 @@ export const subCommand: SubCommand = {
             badges += nitro.badge;
 
             let embed = new EmbedBuilder()
-                .setFooter(await client.method.bot.footerBuilder(interaction))
+                .setFooter(await client.func.displayBotName.footerBuilder(interaction))
                 .setThumbnail("attachment://user_icon.gif")
                 .setTimestamp()
                 .setColor('#0014a8')
@@ -200,7 +200,7 @@ export const subCommand: SubCommand = {
                 .setImage("attachment://user_banner.gif");
 
             var files: { name: string; attachment: any }[] = [
-                await client.method.bot.footerAttachmentBuilder(interaction),
+                await client.func.displayBotName.footerAttachmentBuilder(interaction),
                 {
                     attachment: user.displayAvatarURL({ size: 512, forceStatic: false }),
                     name: 'user_icon.gif'

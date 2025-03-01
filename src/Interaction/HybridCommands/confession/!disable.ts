@@ -54,7 +54,7 @@ export const subCommand: SubCommand = {
                 content: lang.confession_disable_command_work_on
             });
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.confession_log_embed_title_on_enable,
                 description: lang.confession_log_embed_desc_on_enable
                     .replace('${interaction.user}', interaction.member.user.toString())
@@ -68,7 +68,7 @@ export const subCommand: SubCommand = {
                 content: lang.confession_disable_command_work_off
             });
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.confession_log_embed_title_on_enable,
                 description: lang.confession_log_embed_desc_on_disabled
                     .replace('${interaction.user}', interaction.member.user.toString())

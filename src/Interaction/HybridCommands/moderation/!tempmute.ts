@@ -101,7 +101,7 @@ export const subCommand: SubCommand = {
             });
         }, mutetimeMS);
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.tempmute_logs_embed_title,
             description: lang.tempmute_logs_embed_description
                 .replace("${interaction.user.id}", interaction.member.user.id)

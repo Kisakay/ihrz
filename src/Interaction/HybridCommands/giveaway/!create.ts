@@ -117,7 +117,7 @@ export const subCommand: SubCommand = {
             requirement: { type: giveawayRequirement, value: giveawayRequirementValue }
         });
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.reroll_logs_embed_title,
             description: lang.start_logs_embed_description
                 .replace('${interaction.user.id}', interaction.member.user.id)

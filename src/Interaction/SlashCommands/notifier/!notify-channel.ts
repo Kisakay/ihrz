@@ -50,7 +50,7 @@ export const subCommand: SubCommand = {
             })
         };
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.notifier_config_channel_logsEmbed_title,
             description: lang.notifier_config_channel_logsEmbed_desc
                 .replace('${interaction.user.id}', interaction.member.toString())

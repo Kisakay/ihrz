@@ -105,7 +105,10 @@ export async function generateJoinImage(member: GuildMember, optionalOptions?: D
         .replaceAll("40px", textSize)
         .replaceAll("140px", avatarSize)
 
-    var image = await member.client.method.imageManipulation.html2Png(htmlContent);
+    var image = await member.client.func.html2png(htmlContent, {
+        omitBackground: false,
+        selectElement: false
+    });
     return new AttachmentBuilder(image, { name: "image.png" })
 };
 

@@ -68,11 +68,11 @@ export const subCommand: SubCommand = {
             .setTitle(lang.banner_user_embed.replace('${user?.username}', user?.username))
             .setImage(`https://cdn.discordapp.com/banners/${user_1?.id}/${banner}.${format}?size=1024`)
             .setThumbnail(user?.displayAvatarURL() as string)
-            .setFooter(await client.method.bot.footerBuilder(interaction));
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
         await client.method.interactionSend(interaction, {
             embeds: [embed],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
         return;
     },

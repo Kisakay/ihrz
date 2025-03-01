@@ -77,7 +77,7 @@ export const subCommand: SubCommand = {
                 .replace("${tomute.id}", tomute.id)
         });
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.unmute_logs_embed_title,
             description: lang.unmute_logs_embed_description
                 .replace("${interaction.user.id}", interaction.member.user.id)

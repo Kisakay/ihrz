@@ -88,12 +88,12 @@ export const subCommand: SubCommand = {
                 .replace('${toWithdraw}', toWithdraw.toString())
             )
             .addFields({ name: lang.withdraw_embed_fields1_name, value: `${await client.db.get(`${interaction.guildId}.USER.${interaction.member.user.id}.ECONOMY.bank`)}${client.iHorizon_Emojis.icon.Coin}` })
-            .setFooter(await client.method.bot.footerBuilder(interaction))
+            .setFooter(await client.func.displayBotName.footerBuilder(interaction))
             .setTimestamp();
 
         await client.method.interactionSend(interaction, {
             embeds: [embed],
-            files: [await client.method.bot.footerAttachmentBuilder(interaction)]
+            files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });
         return;
     },

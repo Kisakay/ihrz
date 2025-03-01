@@ -144,7 +144,7 @@ export const command: Command = {
                         .replace("${typeOfLogs}", typeOfLogs)
                 });
 
-                await client.method.iHorizonLogs.send(interaction, {
+                await client.func.ihorizon_logs(interaction, {
                     title: lang.setlogschannel_logs_embed_title,
                     description: lang.setlogschannel_logs_embed_description_on_enable
                         .replace(/\${interaction\.user\.id}/g, interaction.member?.user.id!)
@@ -225,7 +225,7 @@ export const command: Command = {
 
         if (type === "off") {
             try {
-                await client.method.iHorizonLogs.send(interaction, {
+                await client.func.ihorizon_logs(interaction, {
                     title: lang.setlogschannel_logs_embed_title,
                     description: lang.setlogschannel_logs_embed_description_on_off
                         .replace(/\${interaction\.user\.id}/g, interaction.member.user.id!)

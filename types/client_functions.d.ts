@@ -11,14 +11,10 @@ import { Command } from './command.js';
 import { Option } from './option.js';
 
 import type { Promise } from 'typescript/lib/lib.es5';
-import type { Buffer } from '@types/node/ts5.6/buffer.buffer';
+import type { Buffer } from '@types/node/buffer.buffer';
 import type { PermLevel, PermNone, StatsMessage, StatsVoice } from '../../../types/database_structure.d';
 
 declare namespace Client_Functions {
-
-  // From encryptDecryptMethod.ts
-  export namespace encryptDecryptMethod {
-  }
 
   // From colors.ts
   export namespace colors {
@@ -28,15 +24,15 @@ declare namespace Client_Functions {
   export namespace axios {
   }
 
+  // From encryptDecryptMethod.ts
+  export namespace encryptDecryptMethod {
+  }
+
   // From getToken.ts
   export function getToken(): Promise<string | undefined>;
 
   // From getIp.ts
   export function getIp({ useIPv6 = false }: { useIPv6?: boolean }): any;
-
-  // From wait.ts
-  export namespace wait {
-  }
 
   // From date_and_time.ts
   export namespace date_and_time {
@@ -119,6 +115,10 @@ declare namespace Client_Functions {
     ): any;
   }
 
+  // From wait.ts
+  export namespace wait {
+  }
+
   // From prefix.ts
   export namespace prefix {
     export function guildPrefix(client: Client, guildId: string): Promise<{ type: 'prefix' | 'mention'; string: string; }>;
@@ -131,6 +131,10 @@ declare namespace Client_Functions {
 
   // From awaitingResponse.ts
   export function awaitingResponse(interaction: ChatInputCommandInteraction<"cached"> | Message, opt: LangForPrompt): any;
+
+  // From image_dominant_color.ts
+  export namespace image_dominant_color {
+  }
 
   // From userStatsUtils.ts
   export namespace userStatsUtils {
@@ -213,7 +217,7 @@ declare namespace Client_Functions {
       interaction: ChatInputCommandInteraction<"cached"> | Message | ButtonInteraction | UserContextMenuCommandInteraction | StringSelectMenuInteraction | Interaction | GuildMember | Guild | Client
     ): any;
     export function displayBotPP(client: Client, guildId?: string): Promise<{ type: 1 | 2; string: string; }>;
-    export function displayBotName(guildId: string): Promise<string>;
+    export function displayBotName(guild: Guild): Promise<string>;
   }
 
   // From generateProgressBar.ts
@@ -226,7 +230,7 @@ declare namespace Client_Functions {
   // From helper.ts
   export namespace helper {
     export function coolDown(message: Message, method: string, ms: number): any;
-    export function hardCooldown(database: QuickDB<any>, method: string, ms: number): any;
+    export function hardCooldown(database: db, method: string, ms: number): any;
   }
 
   // From html2png.ts
@@ -298,10 +302,10 @@ declare namespace Client_Functions {
                 username: string;
                 mention: string;
             }
-            invitesAmount: string;
+            invitesAmount: number;
         },
         ranks?: {
-            level: string;
+            level: number;
         },
         notifier?: {
             artistAuthor: string;

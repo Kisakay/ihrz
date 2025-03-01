@@ -67,7 +67,7 @@ export const subCommand: SubCommand = {
             await client.db.delete(`${interaction.guildId}.USER.${user.id}.XP_LEVELING`);
             await client.method.interactionSend(interaction, { content: lang.resetallinvites_succes_on_delete, components: [] });
 
-            await client.method.iHorizonLogs.send(interaction, {
+            await client.func.ihorizon_logs(interaction, {
                 title: lang.resetallinvites_logs_embed_title,
                 description: lang.reset_uranks_logs_embed_desc
                     .replace("${interaction.member.user.toString()}", interaction.member.user.toString())

@@ -83,7 +83,7 @@ export const subCommand: SubCommand = {
 
         await client.method.interactionSend(interaction, { embeds: [finalEmbed] });
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.removeinvites_logs_embed_title,
             description: lang.removeinvites_logs_embed_description
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)

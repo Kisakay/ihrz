@@ -58,7 +58,7 @@ export const event: BotEvent = {
             })
             .setDescription(suggestionContent.toString())
             .setThumbnail((message.guild?.iconURL() as string))
-            .setFooter(await client.method.bot.footerBuilder(message))
+            .setFooter(await client.func.displayBotName.footerBuilder(message))
             .setTimestamp();
 
         message.delete();
@@ -69,7 +69,7 @@ export const event: BotEvent = {
         let msg = await client.method.channelSend(message, {
             content: message.author.toString(),
             embeds: [suggestionEmbed],
-            files: [await client.method.bot.footerAttachmentBuilder(message)],
+            files: [await client.func.displayBotName.footerAttachmentBuilder(message)],
             enforceNonce: true, nonce: nonce
         });
 

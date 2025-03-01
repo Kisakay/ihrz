@@ -57,7 +57,7 @@ export const subCommand: SubCommand = {
                 });
             }).catch(() => { })
 
-        await client.method.iHorizonLogs.send(interaction, {
+        await client.func.ihorizon_logs(interaction, {
             title: lang.lock_logs_embed_title,
             description: lang.lock_logs_embed_description
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)
