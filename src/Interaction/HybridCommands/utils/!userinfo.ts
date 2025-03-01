@@ -131,10 +131,10 @@ export const subCommand: SubCommand = {
         } else if (interaction instanceof UserContextMenuCommandInteraction) {
             var member = interaction.options.getUser('user') || interaction.user;
         } else {
-            var member = await client.method.user(interaction, args!, 0) || interaction.author;
+            var member = await client.func.method.user(interaction, args!, 0) || interaction.author;
         };
 
-        const originalInteraction = await client.method.interactionSend(interaction as ChatInputCommandInteraction, {
+        const originalInteraction = await client.func.method.interactionSend(interaction as ChatInputCommandInteraction, {
             content: client.iHorizon_Emojis.icon.iHorizon_Discord_Loading
         });
 

@@ -57,7 +57,7 @@ export const command: Command = {
         if (!client.user || !interaction.member || !interaction.guild || !interaction.channel) return;
 
         // if (!client.owners.includes(interaction.member.user.id)) {
-        //     await client.method.interactionSend(interaction, { content: lang.status_be_bot_dev });
+        //     await client.func.method.interactionSend(interaction, { content: lang.status_be_bot_dev });
         //     return;
         // };
         let embed = new EmbedBuilder()
@@ -74,7 +74,7 @@ export const command: Command = {
             .setThumbnail(interaction.guild.iconURL() as string)
             .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });

@@ -56,7 +56,7 @@ export const subCommand: SubCommand = {
 
         await client.db.set(`${interaction.guildId}.UTILS.unban_members`, []);
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [
                 new EmbedBuilder()
                     .setColor(2829617)

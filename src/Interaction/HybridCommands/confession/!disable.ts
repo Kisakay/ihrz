@@ -45,12 +45,12 @@ export const subCommand: SubCommand = {
             var action = interaction.options.getString("action");
         } else {
             
-            var action = client.method.string(args!, 0);
+            var action = client.func.method.string(args!, 0);
         };
 
         if (action === 'on') {
             await client.db.set(`${interaction.guildId}.CONFESSION.disable`, false);
-            await client.method.interactionSend(interaction, {
+            await client.func.method.interactionSend(interaction, {
                 content: lang.confession_disable_command_work_on
             });
 
@@ -64,7 +64,7 @@ export const subCommand: SubCommand = {
         } else if (action === 'off') {
 
             await client.db.set(`${interaction.guildId}.CONFESSION.disable`, true);
-            await client.method.interactionSend(interaction, {
+            await client.func.method.interactionSend(interaction, {
                 content: lang.confession_disable_command_work_off
             });
 

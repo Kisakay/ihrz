@@ -129,7 +129,7 @@ export const command: Command = {
         let already = await client.db.get(`${interaction.guildId}.GUILD.LANG`);
 
         if (already?.lang === type) {
-            await client.method.interactionSend(interaction, { content: lang.setserverlang_already });
+            await client.func.method.interactionSend(interaction, { content: lang.setserverlang_already });
             return;
         }
 
@@ -143,7 +143,7 @@ export const command: Command = {
                 .replace(/\${interaction\.user.id}/g, interaction.member.user.id)
         });
 
-        await client.method.interactionSend(interaction, { content: lang.setserverlang_command_work_enable.replace(/\${type}/g, type!) });
+        await client.func.method.interactionSend(interaction, { content: lang.setserverlang_command_work_enable.replace(/\${type}/g, type!) });
         return;
     },
 };

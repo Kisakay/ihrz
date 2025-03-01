@@ -51,13 +51,13 @@ export const subCommand: SubCommand = {
             var buttonTitle = interaction.options.getString('button-title')?.substring(0, 32) || '+';
         } else {
             
-            var channel = (await client.method.channel(interaction, args!, 0) || interaction.channel) as TextChannel;
-            var buttonTitle = client.method.string(args!, 1)?.substring(0, 32) || '+';
+            var channel = (await client.func.method.channel(interaction, args!, 0) || interaction.channel) as TextChannel;
+            var buttonTitle = client.func.method.string(args!, 1)?.substring(0, 32) || '+';
         };
 
         await client.db.set(`${interaction.guildId}.CONFESSION.channel`, channel.id);
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             content: lang.confession_channel_command_work
                 .replace('${channel?.toString()}', channel.toString()!)
         });

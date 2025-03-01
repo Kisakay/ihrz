@@ -48,7 +48,7 @@ export const event: BotEvent = {
             if (await client.func.helper.coolDown(message, "ping_bot", 7000)) {
                 return;
             };
-            return await client.method.interactionSend(message, { content: text });
+            return await client.func.method.interactionSend(message, { content: text });
         }
         let fetch = message.guild.roles.cache.find((role) => role.id === dbGet.roles);
 
@@ -79,7 +79,7 @@ export const event: BotEvent = {
                 .setTimestamp();
 
             message.member?.roles.add(fetch).catch(() => { });
-            client.method.channelSend(message, {
+            client.func.method.channelSend(message, {
                 embeds: [embed],
                 files: [await client.func.displayBotName.footerAttachmentBuilder(message)],
                 enforceNonce: true,

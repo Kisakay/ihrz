@@ -46,12 +46,12 @@ export const subCommand: SubCommand = {
             var role = interaction.options.getRole("role");
         } else {
 
-            var role = client.method.role(interaction, args!, 0);
+            var role = client.func.method.role(interaction, args!, 0);
         };
 
         (interaction.channel as BaseGuildTextChannel).permissionOverwrites
             .create(role?.id || interaction.guild.roles.everyone.id, { SendMessages: false }).then(async () => {
-                await client.method.interactionSend(interaction, {
+                await client.func.method.interactionSend(interaction, {
                     content: lang.lock_embed_message_description
                         .replace(/\${interaction\.user\.id}/g, interaction.member!.user.id)
                 });

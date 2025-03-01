@@ -52,7 +52,7 @@ export const command: Command = {
         // Guard's Typing
         if (!client.user || !interaction.member || !interaction.guild || !interaction.channel) return;
 
-        const ogI = await client.method.interactionSend(interaction,{ content: client.iHorizon_Emojis.icon.iHorizon_Discord_Loading });
+        const ogI = await client.func.method.interactionSend(interaction,{ content: client.iHorizon_Emojis.icon.iHorizon_Discord_Loading });
 
         let _net01: number | string = '';
         let _net02: number | string = '';

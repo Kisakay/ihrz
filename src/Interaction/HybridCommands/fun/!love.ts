@@ -35,7 +35,7 @@ export const subCommand: SubCommand = {
 
 
         if (await client.db.get(`${interaction.guildId}.GUILD.FUN.states`) === "off") {
-            await client.method.interactionSend(interaction, { content: lang.fun_category_disable });
+            await client.func.method.interactionSend(interaction, { content: lang.fun_category_disable });
             return;
         };
         if (interaction instanceof ChatInputCommandInteraction) {
@@ -43,8 +43,8 @@ export const subCommand: SubCommand = {
             var user2 = interaction.options.getUser("user2") || interaction.guild?.members.cache.random()?.user as User;
         } else {
             
-            var user1 = await client.method.user(interaction, args!, 0) || interaction.author;
-            var user2 = await client.method.user(interaction, args!, 1) || interaction.guild?.members.cache.random()?.user as User;
+            var user1 = await client.func.method.user(interaction, args!, 0) || interaction.author;
+            var user2 = await client.func.method.user(interaction, args!, 1) || interaction.guild?.members.cache.random()?.user as User;
         }
 
         let profileImageSize = 512;
@@ -101,7 +101,7 @@ export const subCommand: SubCommand = {
                 .setFooter(await client.func.displayBotName.footerBuilder(interaction))
                 .setTimestamp();
 
-            await client.method.interactionSend(interaction, {
+            await client.func.method.interactionSend(interaction, {
                 embeds: [embed],
                 files: [
                     { attachment: buffer, name: 'love.png' },
@@ -110,7 +110,7 @@ export const subCommand: SubCommand = {
             });
         } catch (error: any) {
             logger.err(error);
-            await client.method.interactionSend(interaction, { content: lang.love_command_error });
+            await client.func.method.interactionSend(interaction, { content: lang.love_command_error });
         }
     },
 };

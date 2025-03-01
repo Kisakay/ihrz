@@ -63,7 +63,7 @@ export const subCommand: SubCommand = {
         }
 
         if (array.length === 0) {
-            await client.method.interactionSend(interaction, {
+            await client.func.method.interactionSend(interaction, {
                 content: lang.perm_list_no_user
             });
             return;
@@ -186,7 +186,7 @@ export const subCommand: SubCommand = {
 
         let currentPage = 0;
 
-        const message = await client.method.interactionSend(interaction, {
+        const message = await client.func.method.interactionSend(interaction, {
             embeds: [createEmbed(currentPage)],
             components: [createButtons(currentPage)],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction), attachment]

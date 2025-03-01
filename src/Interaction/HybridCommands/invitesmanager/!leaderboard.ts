@@ -100,7 +100,7 @@ export const subCommand: SubCommand = {
         };
 
         const canFitOnOnePage = arr.length <= itemsPerPage;
-        const embedMessage = await client.method.interactionSend(interaction, {
+        const embedMessage = await client.func.method.interactionSend(interaction, {
             embeds: [await generateEmbed(0)],
             components: canFitOnOnePage ? [] : [new ActionRowBuilder<ButtonBuilder>().addComponents(
                 new ButtonBuilder()

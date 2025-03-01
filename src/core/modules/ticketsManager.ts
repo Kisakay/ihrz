@@ -77,7 +77,7 @@ async function CreateButtonPanel(interaction: ChatInputCommandInteraction<"cache
         .setLabel(lang.event_ticket_button_name)
         .setStyle(ButtonStyle.Secondary);
 
-    interaction.client.method.channelSend(interaction, {
+    interaction.client.func.method.channelSend(interaction, {
         embeds: [panel],
         components: [new ActionRowBuilder<ButtonBuilder>().addComponents(confirm)],
         files: [await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction)]
@@ -288,7 +288,7 @@ async function CreateSelectPanel(interaction: ChatInputCommandInteraction<"cache
             }
 
             let reason = await reasonTicket(response!);
-            let panel_message = await interaction.client.method.channelSend(og_interaction, {
+            let panel_message = await interaction.client.func.method.channelSend(og_interaction, {
                 content: undefined,
                 files: [await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction)],
                 embeds: [
@@ -349,7 +349,7 @@ async function CreateSelectPanel(interaction: ChatInputCommandInteraction<"cache
                     .setChannelTypes(ChannelType.GuildCategory)
             );
 
-        const i_category = await interaction.client.method.channelSend(interaction.message!, {
+        const i_category = await interaction.client.func.method.channelSend(interaction.message!, {
             content: lang.event_ticket_category_awaiting_response
                 .replace('${x.emojis ?? interaction.client.iHorizon_Emojis.icon.iHorizon_Pointer}', x.emojis ?? interaction.client.iHorizon_Emojis.icon.iHorizon_Pointer)
                 .replace('${x.name}', x.name),
@@ -381,7 +381,7 @@ async function CreateSelectPanel(interaction: ChatInputCommandInteraction<"cache
                     .setValue('no')
             )
 
-        const i_category = await interaction.client.method.channelSend(interaction.message!, {
+        const i_category = await interaction.client.func.method.channelSend(interaction.message!, {
             content: lang.event_ticket_reason_awaiting_response.replace('${interaction.user.toString()}', interaction.user.toString()),
             components: [new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(action_row_category)]
         });
@@ -935,7 +935,7 @@ async function CloseTicket(interaction: ChatInputCommandInteraction<"cached">) {
                         (interaction.channel as BaseGuildTextChannel).permissionOverwrites.create(member?.user as User, { ViewChannel: false, SendMessages: false, ReadMessageHistory: false });
                         interaction.editReply({ content: data.close_command_work_notify_channel, files: [attachment], embeds: [embed] });
                     } catch {
-                        await interaction.client.method.channelSend(interaction, data.close_command_error);
+                        await interaction.client.func.method.channelSend(interaction, data.close_command_error);
                         return;
                     };
 
@@ -1222,7 +1222,7 @@ async function TicketAddMember_2(interaction: UserSelectMenuInteraction<"cached"
     });
 
     if (addedMembers.length > 0) {
-        interaction.client.method.channelSend(interaction, {
+        interaction.client.func.method.channelSend(interaction, {
             content: data.event_ticket_add_member
                 .replace('${interaction.user}', interaction.user.toString())
                 .replace("${addedMembers.map((memberId) => `<@${memberId}>`).join(' ')}", addedMembers.map((memberId) => `<@${memberId}>`).join(' '))
@@ -1231,7 +1231,7 @@ async function TicketAddMember_2(interaction: UserSelectMenuInteraction<"cached"
     };
 
     if (removedMembers.length > 0) {
-        interaction.client.method.channelSend(interaction, {
+        interaction.client.func.method.channelSend(interaction, {
             content: data.event_ticket_del_member
                 .replace('${interaction.user}', interaction.user.toString())
                 .replace("${removedMembers.map((memberId) => `<@${memberId}>`).join(' ')}", removedMembers.map((memberId) => `<@${memberId}>`).join(' '))

@@ -21,7 +21,6 @@
 
 import { LyricsManager } from "../src/core/functions/lyrics_fetcher.js";
 import { iHorizonTimeCalculator } from "../src/core/functions/ms.js";
-import * as argsHelper from '../src/core/functions/method.js'
 
 import { GiveawayManager } from "../src/core/modules/giveawaysManager.js";
 import { Collection, Snowflake } from 'discord.js';
@@ -71,7 +70,6 @@ declare module 'discord.js' {
         config: ConfigData,
         isModuled?: boolean,
         owners: string[],
-        method: typeof argsHelper,
         bash: Collection<string, BashCommands>,
         notifier: StreamNotifier,
         ownihrz: OwnIHRZ,

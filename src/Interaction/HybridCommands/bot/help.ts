@@ -332,7 +332,7 @@ export const command: Command = {
             var targetCommand = interaction.options.getString('command-name');
         } else {
 
-            var targetCommand = client.method.string(args!, 0);
+            var targetCommand = client.func.method.string(args!, 0);
         };
 
         if (!targetCommand) {
@@ -420,7 +420,7 @@ export const command: Command = {
                 .setThumbnail("attachment://footer_icon.png")
                 .setTimestamp();
 
-            let response = await client.method.interactionSend(interaction, {
+            let response = await client.func.method.interactionSend(interaction, {
                 embeds: [og_embed],
                 components: rows,
                 files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
@@ -463,14 +463,14 @@ export const command: Command = {
             let fetchCommand = client.commands.get(targetCommand) || client.message_commands.get(targetCommand);
 
             if (!fetchCommand) {
-                await client.method.interactionSend(interaction, {
+                await client.func.method.interactionSend(interaction, {
                     content: client.iHorizon_Emojis.icon.No_Logo + " | " + lang.var_unreachable_command,
                 });
                 return;
             }
 
-            await client.method.interactionSend(interaction, {
-                embeds: [await client.method.createAwesomeEmbed(lang, fetchCommand, client, interaction)],
+            await client.func.method.interactionSend(interaction, {
+                embeds: [await client.func.method.createAwesomeEmbed(lang, fetchCommand, client, interaction)],
                 ephemeral: true,
                 files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
             });

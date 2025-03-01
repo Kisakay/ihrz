@@ -45,7 +45,7 @@ export const subCommand: SubCommand = {
             var user: User | undefined = interaction.options.getUser('user') || interaction.user;
         } else {
 
-            var user: User | undefined = await client.method.user(interaction, args!, 0) || interaction.author;
+            var user: User | undefined = await client.func.method.user(interaction, args!, 0) || interaction.author;
         };
 
         let format = 'png';
@@ -70,7 +70,7 @@ export const subCommand: SubCommand = {
             .setThumbnail(user?.displayAvatarURL() as string)
             .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });

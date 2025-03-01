@@ -66,14 +66,14 @@ export const subCommand: SubCommand = {
                         .setColor('#cd703a')
                         .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
-                    await client.method.interactionSend(interaction, {
+                    await client.func.method.interactionSend(interaction, {
                         embeds: [embed],
                         files: [await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction)]
                     });
                     return;
                 })
                 .catch(async err => {
-                    await client.method.interactionSend(interaction, { content: lang.lyrics_not_found });
+                    await client.func.method.interactionSend(interaction, { content: lang.lyrics_not_found });
                     return;
                 });
 

@@ -95,7 +95,7 @@ export const subCommand: SubCommand = {
                     .setStyle(ButtonStyle.Danger)
             );
 
-        let response = await client.method.interactionSend(interaction, {
+        let response = await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             components: [action_row],
             files: [await interaction.client.func.displayBotName.footerAttachmentBuilder(interaction)]

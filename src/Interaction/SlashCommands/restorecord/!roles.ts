@@ -47,7 +47,7 @@ export const subCommand: SubCommand = {
         const table = client.db.table("RESTORECORD");
         const data = getGuildDataPerSecretCode(await table.all(), secretCode);
 
-        if (!data) return client.method.interactionSend(interaction, {
+        if (!data) return client.func.method.interactionSend(interaction, {
             content: lang.rc_key_doesnt_exist
                 .replace("${client.iHorizon_Emojis.icon.No_Logo}", client.iHorizon_Emojis.icon.No_Logo)
                 .replace("${secretCode}", secretCode),
@@ -66,7 +66,7 @@ export const subCommand: SubCommand = {
             )
             .setFooter(footer);
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [mainEmbed],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });

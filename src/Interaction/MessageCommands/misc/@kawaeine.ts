@@ -70,7 +70,7 @@ export const command: Command = {
             return interaction.reply({ content: lang.media_gen_cooldown })
         };
 
-        const beforeSucksUrl = client.method.string(options!, 0) || interaction.attachments.first()?.url;
+        const beforeSucksUrl = client.func.method.string(options!, 0) || interaction.attachments.first()?.url;
 
         if (!beforeSucksUrl) {
             return interaction.reply({ content: lang.media_gen_error_args });

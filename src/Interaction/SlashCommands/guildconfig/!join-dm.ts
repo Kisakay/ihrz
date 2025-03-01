@@ -57,7 +57,7 @@ export const subCommand: SubCommand = {
             .setFields(
                 {
                     name: lang.setjoinmessage_help_embed_fields_custom_name,
-                    value: joinDm ? `\`\`\`${client.method.generateCustomMessagePreview(joinDm, {
+                    value: joinDm ? `\`\`\`${client.func.method.generateCustomMessagePreview(joinDm, {
                         user: interaction.user,
                         guild: interaction.guild,
                         guildLocal: guildLocal,

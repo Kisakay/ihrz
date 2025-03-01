@@ -75,7 +75,7 @@ export const subCommand: SubCommand = {
             .setThumbnail(interaction.guild.iconURL())
             .setImage(`https://cdn.discordapp.com/icons/${interaction.guildId}/${interaction.guild?.banner}.png`);
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [embeds],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });

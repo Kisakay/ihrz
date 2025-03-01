@@ -385,7 +385,7 @@ async function sendErrorMessage(lang: LanguageData, message: Message, botPrefix:
             text: lang.hybridcommands_embed_footer_text.replace("${botPrefix}", botPrefix)
         });
 
-    await message.client.method.interactionSend(message, {
+    await message.client.func.method.interactionSend(message, {
         embeds: [embed],
         files: [await message.client.func.displayBotName.footerAttachmentBuilder(message)]
     });

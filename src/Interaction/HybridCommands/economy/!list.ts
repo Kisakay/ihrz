@@ -43,7 +43,7 @@ export const subCommand: SubCommand = {
         if (!interaction.member || !client.user || !interaction.guild || !interaction.channel) return;
 
         if (await client.db.get(`${interaction.guildId}.ECONOMY.disabled`) === true) {
-            await client.method.interactionSend(interaction, {
+            await client.func.method.interactionSend(interaction, {
                 content: lang.economy_disable_msg
                     .replace('${interaction.user.id}', interaction.member.user.id)
             });
@@ -56,7 +56,7 @@ export const subCommand: SubCommand = {
         }
 
         if (Object.keys(roleData).length === 0) {
-            await client.method.interactionSend(interaction, {
+            await client.func.method.interactionSend(interaction, {
                 content: "There are no buyable roles to list."
             });
             return;
@@ -70,7 +70,7 @@ export const subCommand: SubCommand = {
             .setTimestamp()
             .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });

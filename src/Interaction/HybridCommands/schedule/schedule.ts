@@ -87,7 +87,7 @@ export const command: Command = {
                     .setValue('3'),
             );
 
-        let original_interaction = await client.method.interactionSend(interaction, {
+        let original_interaction = await client.func.method.interactionSend(interaction, {
             content: interaction.member.user.toString(),
             components: [
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(select),
@@ -124,7 +124,7 @@ export const command: Command = {
             });
 
         } catch (e) {
-            return await client.method.interactionSend(interaction, { content: lang.embed_timeout_getbtn });
+            return await client.func.method.interactionSend(interaction, { content: lang.embed_timeout_getbtn });
         };
 
         async function chooseAction(i: StringSelectMenuInteraction) {

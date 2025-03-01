@@ -43,7 +43,7 @@ export const subCommand: SubCommand = {
             .setThumbnail(interaction.guild.iconURL({ size: 4096 }) as string)
             .setFooter(await client.func.displayBotName.footerBuilder(interaction))
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });

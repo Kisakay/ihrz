@@ -68,7 +68,7 @@ export const command: Command = {
 
         let components = new ActionRowBuilder<ButtonBuilder>().addComponents(button_add_me);
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [invites],
             components: [components],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]

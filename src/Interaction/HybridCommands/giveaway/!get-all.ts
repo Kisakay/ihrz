@@ -74,7 +74,7 @@ export const subCommand: SubCommand = {
             );
         });
 
-        await client.method.interactionSend(interaction,
+        await client.func.method.interactionSend(interaction,
             {
                 embeds: [embed],
                 files: [

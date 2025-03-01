@@ -254,7 +254,7 @@ export const subCommand: SubCommand = {
             .setCustomId("antispam-manage-preset-button")
             .setLabel(lang.antispam_manage_button_preset_label);
 
-        const originalResponse = await client.method.interactionSend(interaction, {
+        const originalResponse = await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             components: [
                 new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(select),

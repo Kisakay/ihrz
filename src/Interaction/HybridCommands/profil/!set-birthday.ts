@@ -96,7 +96,7 @@ export const subCommand: SubCommand = {
             .setDescription(introduction + getBirthdayString())
             .setFooter(await client.func.displayBotName.footerBuilder(interaction));
 
-        const og_interaction = await client.method.interactionSend(interaction, {
+        const og_interaction = await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             components: [new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]

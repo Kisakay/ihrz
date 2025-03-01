@@ -82,7 +82,7 @@ export const subCommand: SubCommand = {
         let comp = new ActionRowBuilder<RoleSelectMenuBuilder>().addComponents(roleSelectMenu);
         let comp_2 = new ActionRowBuilder<ButtonBuilder>().addComponents(saveButton);
 
-        let og_response = await client.method.interactionSend(interaction, {
+        let og_response = await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             components: [comp, comp_2]
         });
@@ -113,7 +113,7 @@ export const subCommand: SubCommand = {
 
             if (!roleInteraction.guild?.members.me?.permissions.has(PermissionFlagsBits.ManageRoles)) {
                 await roleInteraction.deferUpdate();
-                await client.method.interactionSend(interaction, { content: lang.setjoinroles_var_perm_issue, ephemeral: true });
+                await client.func.method.interactionSend(interaction, { content: lang.setjoinroles_var_perm_issue, ephemeral: true });
                 return;
             }
 
@@ -122,7 +122,7 @@ export const subCommand: SubCommand = {
                 const rolePermissions = new PermissionsBitField((role[1] as Role).permissions);
                 let roleDangerousPermissions: string[] = [];
 
-                for (const perm of client.method.getDangerousPermissions(lang)) {
+                for (const perm of client.func.method.getDangerousPermissions(lang)) {
                     if (rolePermissions.has(perm.flag)) {
                         roleDangerousPermissions.push(perm.name);
                     }

@@ -73,7 +73,7 @@ export const subCommand: SubCommand = {
         let voiceChannel = (interaction.member as GuildMember).voice.channel;
 
         if (!player || !player.playing || !voiceChannel) {
-            await client.method.interactionSend(interaction, { content: lang.nowplaying_no_queue });
+            await client.func.method.interactionSend(interaction, { content: lang.nowplaying_no_queue });
             return;
         };
 
@@ -105,7 +105,7 @@ export const subCommand: SubCommand = {
             .setColor("#6fa8dc")
             .setImage("attachment://nowplaying.png")
 
-        let response = await client.method.interactionSend(interaction, {
+        let response = await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             components: [btn],
             files: [attachment]
@@ -239,7 +239,7 @@ export const subCommand: SubCommand = {
                 await response.edit({ components: [] });
             });
         } catch {
-            await client.method.channelSend(interaction, client.iHorizon_Emojis.icon.Timer);
+            await client.func.method.channelSend(interaction, client.iHorizon_Emojis.icon.Timer);
             return;
         };
     }

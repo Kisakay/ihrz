@@ -76,7 +76,7 @@ export const subCommand: SubCommand = {
         let helpembed_fields = [
             {
                 name: lang.setjoinmessage_help_embed_fields_custom_name,
-                value: joinMessage ? `\`\`\`${joinMessage}\`\`\`\n${client.method.generateCustomMessagePreview(joinMessage, {
+                value: joinMessage ? `\`\`\`${joinMessage}\`\`\`\n${client.func.method.generateCustomMessagePreview(joinMessage, {
                     user: interaction.user,
                     guild: interaction.guild!,
                     guildLocal: guildLocal,
@@ -84,7 +84,7 @@ export const subCommand: SubCommand = {
             },
             {
                 name: lang.setjoinmessage_help_embed_fields_default_name_empy,
-                value: `\`\`\`${lang.event_welcomer_inviter}\`\`\`\n${client.method.generateCustomMessagePreview(lang.event_welcomer_inviter, {
+                value: `\`\`\`${lang.event_welcomer_inviter}\`\`\`\n${client.func.method.generateCustomMessagePreview(lang.event_welcomer_inviter, {
                     user: interaction.user,
                     guild: interaction.guild!,
                     guildLocal: guildLocal,
@@ -178,7 +178,7 @@ export const subCommand: SubCommand = {
                     helpEmbed.setFields(
                         {
                             name: lang.setjoinmessage_help_embed_fields_custom_name,
-                            value: response ? `\`\`\`${response}\`\`\`\n${client.method.generateCustomMessagePreview(response, {
+                            value: response ? `\`\`\`${response}\`\`\`\n${client.func.method.generateCustomMessagePreview(response, {
                                 user: interaction.user,
                                 guild: interaction.guild!,
                                 guildLocal: guildLocal,

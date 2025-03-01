@@ -45,11 +45,11 @@ export const subCommand: SubCommand = {
             var inputData = interaction.options.getString("giveaway-id");
         } else {
             
-            var inputData = client.method.string(args!, 0);
+            var inputData = client.func.method.string(args!, 0);
         };
 
         if (!await client.giveawaysManager.isValid(inputData as string)) {
-            await client.method.interactionSend(interaction, {
+            await client.func.method.interactionSend(interaction, {
                 content: lang.reroll_dont_find_giveaway
                     .replace("{args}", inputData as string)
             });
@@ -57,14 +57,14 @@ export const subCommand: SubCommand = {
         };
 
         if (!await client.giveawaysManager.isEnded(inputData as string)) {
-            await client.method.interactionSend(interaction, { content: lang.reroll_giveaway_not_over });
+            await client.func.method.interactionSend(interaction, { content: lang.reroll_giveaway_not_over });
             return;
         };
 
         // @ts-ignore
         await client.giveawaysManager.reroll(client, inputData as string);
 
-        await client.method.interactionSend(interaction, { content: lang.reroll_command_work });
+        await client.func.method.interactionSend(interaction, { content: lang.reroll_command_work });
 
         await client.func.ihorizon_logs(interaction, {
             title: lang.reroll_logs_embed_title,

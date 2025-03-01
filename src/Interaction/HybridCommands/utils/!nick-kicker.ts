@@ -111,7 +111,7 @@ export const subCommand: SubCommand = {
 
         const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(selectMenu);
 
-        const ogInteraction = await client.method.interactionSend(interaction, {
+        const ogInteraction = await client.func.method.interactionSend(interaction, {
             embeds: [embed],
             components: [row],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]

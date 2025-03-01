@@ -49,7 +49,7 @@ export const subCommand: SubCommand = {
             var role = interaction.options.getRole("role");
         } else {
 
-            var role = client.method.role(interaction, args!, 0);
+            var role = client.func.method.role(interaction, args!, 0);
         };
 
         interaction.guild.channels.cache.forEach((c) => {
@@ -65,7 +65,7 @@ export const subCommand: SubCommand = {
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)
         });
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             content: lang.lockall_embed_message_description
                 .replace(/\${interaction\.user\.id}/g, interaction.member.user.id)
         });

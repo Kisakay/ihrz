@@ -119,8 +119,8 @@ async function executeCommand(
 
     // for format like: "+utils" without subcommand behind
     if (!command?.run) {
-        await message.client.method.interactionSend(message, {
-            embeds: [await message.client.method.createAwesomeEmbed(lang, command, message.client, message)],
+        await message.client.func.method.interactionSend(message, {
+            embeds: [await message.client.func.method.createAwesomeEmbed(lang, command, message.client, message)],
             files: [await message.client.func.displayBotName.footerAttachmentBuilder(message)]
         });
         return;
@@ -138,7 +138,7 @@ async function executeCommand(
         }
     }
 
-    var _ = await message.client.method.checkCommandArgs(message, command, Array.from(args), lang); if (!_) return;
+    var _ = await message.client.func.method.checkCommandArgs(message, command, Array.from(args), lang); if (!_) return;
     await command.run(message.client, message, lang, args);
 }
 

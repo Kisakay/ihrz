@@ -77,7 +77,7 @@ export const command: Command = {
         }
 
         if (!isOwner?.owner) {
-            await client.method.interactionSend(interaction, { content: lang.owner_not_owner });
+            await client.func.method.interactionSend(interaction, { content: lang.owner_not_owner });
             return;
         };
 
@@ -90,18 +90,18 @@ export const command: Command = {
         if (interaction instanceof ChatInputCommandInteraction) {
             var member = interaction.options.getUser('member');
         } else {
-            var member = await client.method.user(interaction, args!, 0);
+            var member = await client.func.method.user(interaction, args!, 0);
         };
 
         if (!member) {
-            await client.method.interactionSend(interaction, { embeds: [embed], files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)] });
+            await client.func.method.interactionSend(interaction, { embeds: [embed], files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)] });
             return;
         };
 
         let checkAx = await tableOwner.get(`${member.id}.owner`);
 
         if (checkAx) {
-            await client.method.interactionSend(interaction, { content: lang.owner_already_owner });
+            await client.func.method.interactionSend(interaction, { content: lang.owner_already_owner });
             return;
         };
 
@@ -109,7 +109,7 @@ export const command: Command = {
         client.owners.push(member.id);
         client.owners = [...new Set(client.owners)];
 
-        await client.method.interactionSend(interaction, { content: lang.owner_is_now_owner.replace(/\${member\.user\.username}/g, member.globalName || member.displayName) });
+        await client.func.method.interactionSend(interaction, { content: lang.owner_is_now_owner.replace(/\${member\.user\.username}/g, member.globalName || member.displayName) });
         return;
     },
     permission: null

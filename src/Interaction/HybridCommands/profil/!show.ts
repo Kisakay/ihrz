@@ -40,7 +40,7 @@ export const subCommand: SubCommand = {
             var member = interaction.options.getUser("user") as User || interaction.user;
         } else {
 
-            var member = await client.method.user(interaction, args!, 0) || interaction.author;
+            var member = await client.func.method.user(interaction, args!, 0) || interaction.author;
         };
 
         let tableProfil = client.db.table('USER_PROFIL');
@@ -89,7 +89,7 @@ export const subCommand: SubCommand = {
             .setTimestamp()
             .setFooter(await client.func.displayBotName.footerBuilder(interaction))
 
-        await client.method.interactionSend(interaction, {
+        await client.func.method.interactionSend(interaction, {
             embeds: [profil],
             files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)]
         });

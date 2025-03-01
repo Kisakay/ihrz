@@ -231,6 +231,6 @@ export const subCommand: SubCommand = {
 
         const attachment = new AttachmentBuilder(image, { name: 'image.png' });
 
-        await client.method.interactionSend(interaction, { files: [attachment] });
+        await client.func.method.interactionSend(interaction, { files: [attachment] });
     },
 };
