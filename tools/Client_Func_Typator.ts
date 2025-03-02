@@ -41,6 +41,7 @@ import ts from 'typescript';
 import path from 'path';
 
 import { writeFileSync } from 'fs';
+import logger from '../src/core/logger.js';
 
 export class FunctionAnalyzer {
     private program: ts.Program;
@@ -359,7 +360,7 @@ export function generateFunctionInterfaces(
     const interfaces = analyzer.generateInterfaces();
 
     writeFileSync(outputPath, interfaces, 'utf-8');
-    console.log(`Generated interfaces written to ${outputPath}`);
+    logger.log(`Generated interfaces written to ${outputPath}`);
 }
 
 generateFunctionInterfaces(
