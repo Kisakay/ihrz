@@ -24,6 +24,8 @@ declare namespace Client_Functions {
 
   // From encryptDecryptMethod.ts
   export namespace encryptDecryptMethod {
+    export function encrypt(k: string, text: string): string;
+    export function decrypt(k: string, text: string): string | undefined;
   }
 
   // From getToken.ts
@@ -33,8 +35,7 @@ declare namespace Client_Functions {
   export function getIp(useIPv6?: boolean): Promise<string>;
 
   // From date_and_time.ts
-  export namespace date_and_time {
-  }
+  export function date_and_time(date: Date | number, formatString: string): string;
 
   // From apiUrlParser.ts
   export namespace apiUrlParser {
@@ -68,6 +69,8 @@ declare namespace Client_Functions {
 
   // From emojiChecker.ts
   export namespace emojiChecker {
+    export function isSingleEmoji(text: string): boolean;
+    export function isDiscordEmoji(text: string): boolean;
   }
 
   // From modalHelper.ts
@@ -138,6 +141,7 @@ declare namespace Client_Functions {
     export function string(args: string[], argsNumber: number): string | null;
     export function longString(args: string[], argsNumber: number): string | null;
     export function number(args: string[], argsNumber: number): number;
+    export function getArgumentOptionNameWithOptions(o: Option): string;
     export function stringifyOption(option: Option[]): string;
     export function boldStringifyOption(option: Option[]): string;
     export function createAwesomeEmbed(
@@ -197,8 +201,7 @@ declare namespace Client_Functions {
   }
 
   // From wait.ts
-  export namespace wait {
-  }
+  export function wait(milliseconds: number): Promise<void>;
 
   // From prefix.ts
   export namespace prefix {
@@ -207,12 +210,10 @@ declare namespace Client_Functions {
   }
 
   // From maskLink.ts
-  export namespace maskLink {
-  }
+  export function maskLink(input: string): string;
 
   // From image_dominant_color.ts
-  export namespace image_dominant_color {
-  }
+  export function image_dominant_color(input: string | Buffer): Promise<string>;
 
   // From userStatsUtils.ts
   export namespace userStatsUtils {

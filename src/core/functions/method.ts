@@ -127,7 +127,7 @@ export function number(args: string[], argsNumber: number): number {
     return Number.isNaN(parseInt(value)) ? 0 : parseInt(value);
 }
 
-const getArgumentOptionNameWithOptions = (o: Option): string => {
+export function getArgumentOptionNameWithOptions(o: Option): string {
     if (o.choices) {
         return o.choices.map(x => x.value).join("/");
     }
