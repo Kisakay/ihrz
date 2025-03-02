@@ -217,7 +217,7 @@ async function processCommandOptions(
     }
 }
 
-async function processCommand(
+export async function processCommand(
     command: Command,
     path: string,
     client: Client
