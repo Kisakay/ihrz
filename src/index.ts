@@ -20,7 +20,7 @@
 
 import './core/functions/colors.js';
 
-import { getToken } from './core/functions/getToken.js';
+import getToken  from './core/functions/getToken.js';
 import logger from './core/logger.js';
 
 import { ShardingManager } from 'discord.js';
