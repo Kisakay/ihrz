@@ -145,6 +145,7 @@ export async function load_cache(client: Client) {
         }
     }
     global.cache.initializeSubCommands(client);
+    logger.log(`${client.config.console.emojis.OK} >> Loaded ${slashs} Slash commands.`);
 
     // Load Hybrid Commands
     let hybridCommands = Object.values(global.cache.hybrid)
@@ -167,4 +168,6 @@ export async function load_cache(client: Client) {
         }
     }
     global.cache.initializeHybridCommands(client);
+    logger.log(`${client.config.console.emojis.OK} >> Loaded ${hybrids} Hybrid commands.`);
+
 }

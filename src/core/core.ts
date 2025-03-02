@@ -55,6 +55,7 @@ import { AutoRenew } from './modules/autorenewManager.js';
 import config from '../files/config.js';
 import { Client_Functions } from '../../types/client_functions.js';
 import { AnotherCommand } from '../../types/anotherCommand.js';
+import { load_cache } from '../load_cache.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -129,13 +130,18 @@ export async function main(client: Client) {
     playerManager(client);
     bash(client);
     emojis(client);
-    let handlerPath = path.join(__dirname, '..', 'core', 'handlers');
-    let handlerFiles = (await readdir(handlerPath)).filter(file => file.endsWith('.js'));
+    if (process.env.CACHE === "true") {
+        logger.log(`[${config.console.emojis.LOAD}] Cache is enabled, initializing cache storage...`.bgBlack.gray.boldText);
+        await load_cache(client);
+    } else {
+        let handlerPath = path.join(__dirname, '..', 'core', 'handlers');
+        let handlerFiles = (await readdir(handlerPath)).filter(file => file.endsWith('.js'));
 
-    for (const file of handlerFiles) {
-        const { default: handlerFunction } = await import(`${handlerPath}/${file}`);
-        if (handlerFunction && typeof handlerFunction === 'function') {
-            await handlerFunction(client);
+        for (const file of handlerFiles) {
+            const { default: handlerFunction } = await import(`${handlerPath}/${file}`);
+            if (handlerFunction && typeof handlerFunction === 'function') {
+                await handlerFunction(client);
+            }
         }
     }
 
