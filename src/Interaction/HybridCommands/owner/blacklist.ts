@@ -236,8 +236,9 @@ export const command: Command = {
 					} catch {
 						return false;
 					}
+				} else {
+					return false;
 				}
-				return false;
 			});
 
 			let results = await Promise.all(banPromises);
@@ -282,8 +283,9 @@ export const command: Command = {
 					} catch {
 						return false;
 					}
+				} else {
+					return false;
 				}
-				return false;
 			});
 
 			let results = await Promise.all(banPromises);
