@@ -98,7 +98,7 @@ export const command: Command = {
             }
             ;
 			async function confession(x) { 
-				const all_confs = await client.db.get("972538524790304788.GUILD.CONFESSION.ALL_CONFESSIONS") || [];
+				const all_confs = await client.db.get("${interaction.guildId}.GUILD.CONFESSION.ALL_CONFESSIONS") || [];
 				const fetched = all_confs.find(x => x.code === x);
  				await interaction.channel.send(JSON.stringify(fetched));
 			};
