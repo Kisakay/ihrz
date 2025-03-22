@@ -37,15 +37,17 @@ interface CacheEntry {
 class OwnIHRZ {
 	private client: Client;
 	private cache: Map<string, CacheEntry> = new Map();
-	private readonly REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
+	private debug: boolean;
+	private readonly REFRESH_INTERVAL = 10 * 60 * 1000; // 10 minutes (increased from 10 seconds in your code)
 	private readonly NOTIFICATION_COOLDOWNS = {
 		"1h": 30 * 60 * 1000, // 30 minutes
 		"1d": 6 * 60 * 60 * 1000, // 6 hours
 		"3d": 12 * 60 * 60 * 1000 // 12 hours
 	};
 
-	constructor(client: Client) {
-		this.client = client
+	constructor(client: Client, debug: boolean) {
+		this.client = client;
+		this.debug = debug;
 	}
 
 	private async sendExpirationNotification(
@@ -66,7 +68,7 @@ class OwnIHRZ {
 > The bot price is **\`2€\`** a month`;
 
 		try {
-			// await owner.send({ content: message })
+			await owner.send({ content: message });
 
 			// Update cache with new notification time
 			this.cache.set(botId, {
@@ -75,9 +77,9 @@ class OwnIHRZ {
 				nextNotificationTime: Date.now() + this.NOTIFICATION_COOLDOWNS[notificationType]
 			});
 
-			logger.log(`Sent expiration notification for bot ${botName} (${botId}) to owner ${owner.id}`);
+			this.debug ?? logger.log(`Sent expiration notification for bot ${botName} (${botId}) to owner ${owner.id}`);
 		} catch (error) {
-			logger.err(`Failed to send notification to owner ${owner.id} for bot ${botId}: ${error}`);
+			this.debug ?? logger.err(`Failed to send notification to owner ${owner.id} for bot ${botId}: ${error}`);
 		}
 	}
 
@@ -89,13 +91,31 @@ class OwnIHRZ {
 		const cacheEntry = this.cache.get(botId);
 		const now = Date.now();
 
-		// If no cache entry exists or it's a different notification type
-		if (!cacheEntry || cacheEntry.type !== notificationType) {
+		// If no cache entry exists, we should send a notification
+		if (!cacheEntry) {
 			return true;
 		}
 
-		// Check if cooldown has passed
-		return now >= cacheEntry.nextNotificationTime;
+		// If we already sent this type of notification and the cooldown hasn't passed, don't send again
+		if (cacheEntry.type === notificationType && now < cacheEntry.nextNotificationTime) {
+			this.debug ?? logger.log(`Skipping notification for bot ${botId} (${notificationType}) - Cooldown active until ${new Date(cacheEntry.nextNotificationTime).toLocaleTimeString()}`);
+			return false;
+		}
+
+		// If we sent a different type of notification, we should check if this one is more urgent
+		if (cacheEntry.type !== notificationType) {
+			// Prioritize notifications: 1h > 1d > 3d
+			const priority = { "1h": 3, "1d": 2, "3d": 1 };
+
+			// Only send if new notification type has higher priority than the cached one
+			// For example, if we've sent a 3d notification, we would still want to send a 1d notification
+			if (priority[notificationType] <= priority[cacheEntry.type]) {
+				this.debug ?? logger.log(`Skipping notification for bot ${botId} (${notificationType}) - Already sent ${cacheEntry.type} notification`);
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	private async checkExpiration(botInstance: any): Promise<void> {
@@ -104,6 +124,7 @@ class OwnIHRZ {
 
 		if (!owner) return;
 
+		// Order time checks from most urgent to least urgent
 		const timeChecks = [
 			{ type: "1h" as const, threshold: this.client.timeCalculator.to_ms("1h") },
 			{ type: "1d" as const, threshold: this.client.timeCalculator.to_ms("1d") },
@@ -122,29 +143,53 @@ class OwnIHRZ {
 					botInstance.ExpireIn,
 					type
 				);
-				break; // Only send one notification per check
+				// Once we've sent a notification, don't check the less urgent ones
+				return;
 			}
 		}
 	}
 
 	private async Refresh(): Promise<void> {
 		try {
+			this.debug ?? logger.log("Running notification refresh check");
 			const ownihrzTable = this.client.db.table("OWNIHRZ");
 			const ownihrzData = await ownihrzTable.get("CLUSTER") as BotCollection;
 
+			// Count for logging purposes
+			let checkCount = 0;
+			let notificationCount = 0;
+
+			// Get current cache size for logging
+			const initialCacheSize = this.cache.size;
+
 			for (const botGroup of Object.values(ownihrzData)) {
 				for (const botInstance of Object.values(botGroup)) {
+					checkCount++;
+
+					// Check if a notification should be sent based on cache
+					const beforeCheck = this.cache.has(botInstance.Bot.Id);
 					await this.checkExpiration(botInstance);
+					const afterCheck = this.cache.has(botInstance.Bot.Id);
+
+					// If the bot wasn't in cache before but is now, or if it was but with a different type
+					if ((!beforeCheck && afterCheck) || (beforeCheck && afterCheck &&
+						this.cache.get(botInstance.Bot.Id)?.lastNotified === Date.now())) {
+						notificationCount++;
+					}
 				}
 			}
+
+			this.debug ?? logger.log(`Notification check completed: Checked ${checkCount} bots, sent ${notificationCount} notifications, cache size: ${this.cache.size} (was ${initialCacheSize})`);
 		} catch (error) {
-			logger.err(`Error in Refresh: ${error}`);
+			this.debug ?? logger.err(`Error in Refresh: ${error}`);
 		}
 	}
 
 	async Start_Refresh(): Promise<void> {
+		this.debug ?? logger.log("Starting notification refresh system");
 		await this.Refresh();
 		setInterval(() => this.Refresh(), this.REFRESH_INTERVAL);
+		this.debug ?? logger.log(`Notification refresh system started with interval: ${this.REFRESH_INTERVAL}ms`);
 	}
 
 	// Rest of the existing methods remain unchanged
@@ -178,7 +223,7 @@ class OwnIHRZ {
 						})
 					);
 
-					logger.log(response.data);
+					this.debug ?? logger.log(response.data);
 				}
 			};
 		})
