@@ -20,7 +20,7 @@
 */
 
 
-import { Client } from 'discord.js';
+import { Client, time, User } from 'discord.js';
 
 import { BotCollection, Custom_iHorizon, OwnIHRZ_New_Expire_Time_Object, OwnIHRZ_New_Owner_Object } from "../../../types/ownihrz.js";
 
@@ -28,13 +28,126 @@ import { OwnIhrzCluster, ClusterMethod } from "../functions/apiUrlParser.js";
 import { AxiosResponse, axios } from "../functions/axios.js";
 import logger from "../logger.js";
 
+interface CacheEntry {
+	type: "1h" | "3d" | "1d";
+	lastNotified: number;
+	nextNotificationTime: number;
+}
+
 class OwnIHRZ {
 	private client: Client;
+	private cache: Map<string, CacheEntry> = new Map();
+	private readonly REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
+	private readonly NOTIFICATION_COOLDOWNS = {
+		"1h": 30 * 60 * 1000, // 30 minutes
+		"1d": 6 * 60 * 60 * 1000, // 6 hours
+		"3d": 12 * 60 * 60 * 1000 // 12 hours
+	};
 
 	constructor(client: Client) {
 		this.client = client
 	}
 
+	private async sendExpirationNotification(
+		owner: User,
+		botId: string,
+		botName: string,
+		expireTime: number,
+		notificationType: "1h" | "1d" | "3d"
+	): Promise<void> {
+		var message = `📌  __**Your bot soon expire**__
+
+> Bot: <@${botId}>
+> Expire in: **${time(new Date(expireTime), "R")}**
+
+❓ __**How renew your bot?**__
+
+> Open a ticket in the [iHorizon Support Server](https://discord.gg/ihorizon)
+> The bot price is **\`2€\`** a month`;
+
+		try {
+			// await owner.send({ content: message })
+
+			// Update cache with new notification time
+			this.cache.set(botId, {
+				type: notificationType,
+				lastNotified: Date.now(),
+				nextNotificationTime: Date.now() + this.NOTIFICATION_COOLDOWNS[notificationType]
+			});
+
+			logger.log(`Sent expiration notification for bot ${botName} (${botId}) to owner ${owner.id}`);
+		} catch (error) {
+			logger.err(`Failed to send notification to owner ${owner.id} for bot ${botId}: ${error}`);
+		}
+	}
+
+	private shouldSendNotification(
+		botId: string,
+		expireTime: number,
+		notificationType: "1h" | "1d" | "3d"
+	): boolean {
+		const cacheEntry = this.cache.get(botId);
+		const now = Date.now();
+
+		// If no cache entry exists or it's a different notification type
+		if (!cacheEntry || cacheEntry.type !== notificationType) {
+			return true;
+		}
+
+		// Check if cooldown has passed
+		return now >= cacheEntry.nextNotificationTime;
+	}
+
+	private async checkExpiration(botInstance: any): Promise<void> {
+		const now = Date.now();
+		const owner = await this.client.users.fetch(botInstance.OwnerOne).catch(() => null);
+
+		if (!owner) return;
+
+		const timeChecks = [
+			{ type: "1h" as const, threshold: this.client.timeCalculator.to_ms("1h") },
+			{ type: "1d" as const, threshold: this.client.timeCalculator.to_ms("1d") },
+			{ type: "3d" as const, threshold: this.client.timeCalculator.to_ms("3d") }
+		];
+
+		for (const { type, threshold } of timeChecks) {
+			if (
+				botInstance.ExpireIn < now + threshold &&
+				this.shouldSendNotification(botInstance.Bot.Id, botInstance.ExpireIn, type)
+			) {
+				await this.sendExpirationNotification(
+					owner,
+					botInstance.Bot.Id,
+					botInstance.Bot.Name,
+					botInstance.ExpireIn,
+					type
+				);
+				break; // Only send one notification per check
+			}
+		}
+	}
+
+	private async Refresh(): Promise<void> {
+		try {
+			const ownihrzTable = this.client.db.table("OWNIHRZ");
+			const ownihrzData = await ownihrzTable.get("CLUSTER") as BotCollection;
+
+			for (const botGroup of Object.values(ownihrzData)) {
+				for (const botInstance of Object.values(botGroup)) {
+					await this.checkExpiration(botInstance);
+				}
+			}
+		} catch (error) {
+			logger.err(`Error in Refresh: ${error}`);
+		}
+	}
+
+	async Start_Refresh(): Promise<void> {
+		await this.Refresh();
+		setInterval(() => this.Refresh(), this.REFRESH_INTERVAL);
+	}
+
+	// Rest of the existing methods remain unchanged
 	async Startup_Cluster() {
 		this.client.config.core.cluster.forEach(async (x, index) => {
 			await axios.post(
@@ -47,7 +160,6 @@ class OwnIHRZ {
 		})
 	}
 
-	// Working
 	async Startup_Container() {
 		var table_1 = this.client.db.table("OWNIHRZ");
 
@@ -72,7 +184,6 @@ class OwnIHRZ {
 		})
 	};
 
-	// Working
 	async ShutDown(cluster_id: number, id_to_bot: string, modifyDb: boolean) {
 		axios.get(
 			OwnIhrzCluster({
@@ -87,7 +198,6 @@ class OwnIHRZ {
 		return 0;
 	};
 
-	// Working
 	async PowerOn(cluster_id: number, id_to_bot: string) {
 		axios.get(
 			OwnIhrzCluster({
@@ -99,10 +209,9 @@ class OwnIHRZ {
 			logger.log(response.data)
 		}).catch(error => { logger.err(error); });
 		return 0;
-	};
 
+	}
 
-	// Working
 	async Delete(cluster_id: number, id_to_bot: string) {
 		axios.get(
 			OwnIhrzCluster({
@@ -116,7 +225,6 @@ class OwnIHRZ {
 		return 0;
 	};
 
-	// Working
 	async QuitProgram() {
 		for (const cluster_number of this.client.config.core.cluster.keys()) {
 			await axios.post(
