@@ -244,7 +244,7 @@ export const subCommand: SubCommand = {
 			embeds: [currentCategory === 0 ? mainEmbed : generateEmbed(currentPage)],
 			components: updateComponents(),
 			files: [await client.func.displayBotName.footerAttachmentBuilder(interaction)],
-			fetchReply: true
+			withResponse: true
 		});
 
 		const collector = message.createMessageComponentCollector({ time: 60000 });

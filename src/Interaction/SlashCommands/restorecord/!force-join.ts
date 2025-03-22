@@ -72,7 +72,7 @@ export const subCommand: SubCommand = {
 		const response = await client.func.method.interactionSend(interaction, {
 			embeds: [embed],
 			ephemeral: false,
-			fetchReply: true,
+			withResponse: true,
 			components: [
 				new ActionRowBuilder<ButtonBuilder>()
 					.addComponents(
