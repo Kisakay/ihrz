@@ -63,10 +63,6 @@ export const command: Command = {
 			name: "disable",
 			prefixName: "ranks-disable",
 
-			name_localizations: {
-				fr: "statut",
-			},
-
 			description: "Disable the message when user earn new xp level message!",
 			description_localizations: {
 				fr: "Désactivez le message lorsque l'utilisateur gagne un nouveau message de niveau XP",
